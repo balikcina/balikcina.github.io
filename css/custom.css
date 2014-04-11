@@ -1,0 +1,130 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+.alignright {
+	text-align:right;
+}
+
+.aligncenter {
+	text-align:center;
+}
+
+.alignleft {
+	text-align:left;
+}
+
+.alignjustify {
+	text-align:justify;
+}
+
+.bigspace {
+	line-height: 150%;
+}
+
+
+.widetext {
+	letter-spacing:1.1px
+}
+
+.voffset  { margin-top: 2px; }
+.voffset1 { margin-top: 5px; }
+.voffset2 { margin-top: 10px; }
+.voffset3 { margin-top: 15px; }
+.voffset4 { margin-top: 30px; }
+.voffset5 { margin-top: 40px; }
+.voffset6 { margin-top: 60px; }
+.voffset7 { margin-top: 80px; }
+.voffset8 { margin-top: 100px; }
+.voffset9 { margin-top: 150px; }
+
+.lobster {
+	font-family: 'Lobster', cursive;
+}
+
+lobster {
+	font-family: 'Lobster', cursive;
+}
+
+footer {
+	margin: 50px 0;
+}
+
+.avatar {
+	max-width:70%;
+}
+
+.mainpage a:link{
+	color:#000000;
+}
+
+.vermiddle{
+	vertical-align: middle;
+}
+
+.navbar { 
+    background: url(../img/dark_fish_skin.png) repeat 0 0;
+}
+
+.bigfont {
+	border-radius: 6px;
+	border-color: #bebebe;
+	border-style: solid;
+	border-width: thin;
+	padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: 60px;
+    padding-right: 60px;    
+}
+.bigfont h1,
+.bigfont .h1 {
+	font-size: 72px;
+}
+
+.bigfont p,
+.bigfont .p {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 200;
+}
+
+.bubble 
+{
+position: relative;
+padding: 15px;
+margin:1em 0 3em;
+background: #FFFFFF;
+color:#21205F;
+-webkit-border-radius: 12px;
+-moz-border-radius: 12px;
+border-radius: 12px;
+border: #21205F solid 3px;
+}
+
+.bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 19px 11px 0;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+margin-left: -11px;
+bottom: -19px;
+left: 88%;
+}
+
+.bubble:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 21px 13px 0;
+border-color: #21205F transparent;
+display: block;
+width: 0;
+z-index: 0;
+margin-left: -13px;
+bottom: -24px;
+left: 88%;
+}
