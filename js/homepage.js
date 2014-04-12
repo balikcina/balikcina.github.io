@@ -16,10 +16,11 @@ function loop(quotesdata, quote_id)
 		facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
 		
 		if(quotecontext != null && quotecontext != "" && quotecontext != " "){
-			thecontext = "On " + quotecontext + ": <p>";
+			thecontext = "<em>On " + quotecontext + ": </em><p>";
 		}
+
 		else{
-			thecontext = " ";
+			thecontext = "<em>Context: [...] </em><p> ";
 		}
 		
 
@@ -84,20 +85,20 @@ function range(start, end) {
     return foo;
 }
 
-$.getJSON('https://vast-scrubland-9059.herokuapp.com/players.json', function(playersdata) {
+// $.getJSON('https://vast-scrubland-9059.herokuapp.com/players.json', function(playersdata) {
 
-	for (var i=0; i<playersdata.length; i++){
+// 	for (var i=0; i<playersdata.length; i++){
 
-		var player_name = playersdata[i]["name"];
-		var player_url = 'players.html?name=' + player_name
-		var player_name = player_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+// 		var player_name = playersdata[i]["name"];
+// 		var player_url = 'players.html?name=' + player_name
+// 		var player_name = player_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 
- 		$("#list-names").append(function(){
- 			return "<p> <a href='" + player_url + "'>" + player_name + "</a> </p>";
- 		});
+//  		$("#list-names").append(function(){
+//  			return "<p> <a href='" + player_url + "'>" + player_name + "</a> </p>";
+//  		});
 
- 	}
- });
+//  	}
+//  });
 
 $.getJSON('https://vast-scrubland-9059.herokuapp.com/tags.json', function(tagsdata) {
 	for (var i=0; i<tagsdata["player_tags"].length; i++){
@@ -106,7 +107,7 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/tags.json', function(tagsda
 		var tag_url = 'tags.html?tag=' + tagsdata["player_tags"][i]["name"]
 
  		$("#list-tags").append(function(){
- 			return "<p> <a href='" + tag_url + "'>" + tag_name + "</a> </p>";
+ 			return "<a href='" + tag_url + "'>" + tag_name + " </a>";
  		});
  	}
 
@@ -116,7 +117,7 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/tags.json', function(tagsda
 		var tag_url = 'tags.html?tag=' + tagsdata["quote_tags"][i]["name"]
 
  		$("#list-tags").append(function(){
- 			return "<p> <a href='" + tag_url + "'>" + tag_name + "</a> </p>";
+ 			return "<a href='" + tag_url + "'>" + tag_name + " </a>";
  		});
  	}
 
