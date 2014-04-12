@@ -25,8 +25,8 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
 		player_name = searchdata['players'][i]['name'];
 		player_name = replaceAll('%20', ' ', player_name);
 		player_name = player_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-		player_url = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/players.html?name=' + player_name
-
+		player_url = 'players.html?name=' + player_name
+`
 		$("#list-profiles").append(function(){		
 			return 	"<ul class='list-group aligncenter'>"+
 					"<div>"+
@@ -41,8 +41,8 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
 		quoteurl = searchdata['quotes'][i]['source_url'];
 		quotecontents = searchdata['quotes'][i]["quote"];
 		quotedate = searchdata['quotes'][i]["source_date"];
-		quotelink = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/quotes.html?quote_id=' + searchdata['quotes'][i]['id'];
-		playerlink = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/players.html?name=' + searchdata['quotes'][i]['player_name'];
+		quotelink = 'quotes.html?quote_id=' + searchdata['quotes'][i]['id'];
+		playerlink = 'players.html?name=' + searchdata['quotes'][i]['player_name'];
 		
 
 		$("#player-quotes").append(function(){

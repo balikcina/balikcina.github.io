@@ -42,8 +42,8 @@ function getQuotes(quotesdata, quote_id){
 		quoteurl = quotesdata[quote_id]['source_url'];
 		quotecontents = quotesdata[quote_id]["quote"];
 		quotedate = quotesdata[quote_id]["source_date"];
-		quotelink = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/quotes.html?quote_id=' + quotesdata[quote_id]['id'];
-		// playerlink = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/players.html?name=' + params()['name'];
+		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
+		// playerlink = 'players.html?name=' + params()['name'];
 
 		$("#player-quotes").append(function(){
  				

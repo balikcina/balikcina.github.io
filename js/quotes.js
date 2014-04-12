@@ -19,7 +19,7 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		quotetitle = data['quote'];
 		quotedate = data["source_date"];
 		quoteurl = data['source_url'];
-		quotelink = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/quotes.html?quote_id=' + data['id'];
+		quotelink = 'quotes.html?quote_id=' + data['id'];
 
 		$(document).attr('title', 'Balik Cina - ' + quotetitle);
 		$('meta[name=og\\:title]').attr('content', 'Balik Cina!');
@@ -37,7 +37,7 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		$.getJSON("https://vast-scrubland-9059.herokuapp.com/players/" + data['player_id'] + ".json", function(nplayerdata){
 		
 		player_name = nplayerdata["name"].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
-		playerlink = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/players.html?name=' + player_name;
+		playerlink = 'players.html?name=' + player_name;
 		
  		$("#quotebuttons").append(function(){ 				
  			return 	"<div class='btn-group pull-right'>" +				

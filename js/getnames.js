@@ -3,7 +3,7 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/players.json', function(pla
 	for (var i=0; i<playersdata.length; i++){
 
 		var player_name = playersdata[i]["name"];
-		var player_url = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/players.html?name=' + player_name
+		var player_url = 'players.html?name=' + player_name
 		var player_name = player_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 
  		$("#list-names").append(function(){
@@ -21,8 +21,8 @@ function loop(quotesdata, quote_id)
 		quoteurl = quotesdata[quote_id]['source_url'];
 		quotecontents = quotesdata[quote_id]["quote"];
 		quotedate = quotesdata[quote_id]["source_date"];
-		quotelink = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/quotes.html?quote_id=' + quotesdata[quote_id]['id'];
-		playerlink = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/players.html?name=' + player_name;		
+		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
+		playerlink = 'players.html?name=' + player_name;		
 
  		$("#top-quotes").append(function(){
  				
