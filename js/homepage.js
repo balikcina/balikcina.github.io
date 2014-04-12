@@ -11,8 +11,8 @@ function loop(quotesdata, quote_id)
 		quotedate = quotesdata[quote_id]["source_date"];
 		quotecontext = quotesdata[quote_id]["context"];
 		viewcount = quotesdata[quote_id]["view_count"];
-		quotelink = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/quotes.html?quote_id=' + quotesdata[quote_id]['id'];
-		playerlink = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/players.html?name=' + player_name;
+		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
+		playerlink = 'players.html?name=' + player_name;
 		facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
 		
 		if(quotecontext != null){
@@ -89,7 +89,7 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/players.json', function(pla
 	for (var i=0; i<playersdata.length; i++){
 
 		var player_name = playersdata[i]["name"];
-		var player_url = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/players.html?name=' + player_name
+		var player_url = 'players.html?name=' + player_name
 		var player_name = player_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 
  		$("#list-names").append(function(){
@@ -103,7 +103,7 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/tags.json', function(tagsda
 	for (var i=0; i<tagsdata["player_tags"].length; i++){
 
 		var tag_name = tagsdata["player_tags"][i]["name"];
-		var tag_url = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/tags.html?tag=' + tagsdata["player_tags"][i]["name"]
+		var tag_url = 'tags.html?tag=' + tagsdata["player_tags"][i]["name"]
 
  		$("#list-tags").append(function(){
  			return "<p> <a href='" + tag_url + "'>" + tag_name + "</a> </p>";
@@ -113,7 +113,7 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/tags.json', function(tagsda
 	for (var i=0; i<tagsdata["quote_tags"].length; i++){
 
 		var tag_name = tagsdata["quote_tags"][i]["name"];
-		var tag_url = 'https://dl.dropboxusercontent.com/u/37316277/BalikCina/tags.html?tag=' + tagsdata["quote_tags"][i]["name"]
+		var tag_url = 'tags.html?tag=' + tagsdata["quote_tags"][i]["name"]
 
  		$("#list-tags").append(function(){
  			return "<p> <a href='" + tag_url + "'>" + tag_name + "</a> </p>";
