@@ -13,7 +13,6 @@ function getPlayer(quotesdata){
 		player_name = params()['name'];
 		playeravatar = nplayerdata['avatar_url'];
 		playerprofile = nplayerdata['description'];
-		playertags = nplayerdata['tags'];
 		
 		$("#playername").html(function(){
 			var player_name = params()['name'];
@@ -31,9 +30,11 @@ function getPlayer(quotesdata){
 			return "<p>" + playerprofile + "<p>";
 		});
 
-		$("#playertags").html(function(){			
-			return "<p>" + playertags.join( ", " ) + "<p>";
-		});
+		for (var i=0; i < nplayerdata['tags'].length; i++){
+			$("#playertags").append(function(){
+				return "<a href ='tags.html?tag=" + nplayerdata['tags'][i] + "'>"+ nplayerdata['tags'][i] + " </a>";
+			});	
+		}
 
 	});
 }
