@@ -19,6 +19,7 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		quotetitle = data['quote'];
 		quotedate = data["source_date"];
 		quoteurl = data['source_url'];
+		viewcount = data["view_count"];
 		quotelink = 'quotes.html?quote_id=' + data['id'];
 
 		$(document).attr('title', 'Balik Cina - ' + quotetitle);
@@ -47,7 +48,8 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
  		$("#quotebuttons").append(function(){ 				
  			return 	"<div class='btn-group pull-right'>" +				
 					"<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
- 					"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" + 					
+ 					"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
+ 					"<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>" + "<i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></a>" + 					
  					"<a class='btn btn-default vermiddle' href='" + playerlink + "'role='button'>" + "<i class='fa fa-heart fa-lg'>&nbsp; </i>"  + player_name + "</a>" +
  					"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
 					// "<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +

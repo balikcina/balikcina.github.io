@@ -21,6 +21,7 @@ function loop(quotesdata, quote_id)
 		quoteurl = quotesdata[quote_id]['source_url'];
 		quotecontents = quotesdata[quote_id]["quote"];
 		quotedate = quotesdata[quote_id]["source_date"];
+		viewcount = quotesdata[quote_id]["view_count"];
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
 		playerlink = 'players.html?name=' + player_name;		
 
@@ -32,6 +33,7 @@ function loop(quotesdata, quote_id)
  					"<div class='btn-group pull-left'>" +				
 					"<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
+ 					"<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>" + "<i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></a>" +
  					"</div>"+ 
  					"<div class='btn-group pull-right'>" +					
  					"<a class='btn btn-default vermiddle' href='" + playerlink + "'role='button'>" + "<i class='fa fa-heart fa-lg'>&nbsp; </i>"  + player_name + "</a>" +
