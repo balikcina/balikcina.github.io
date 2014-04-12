@@ -11,16 +11,28 @@ params = function() {
 $(document).attr('title', 'Balik Cina - ' + params()['key']);
 
 $("#searchname").html(function(){
-	return params()['key'];
+	search_name = replaceAll('+', ' ', params()['key']);
+	search_name = search_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+	return search_name;
 });	
 
 $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()['key'], function( searchdata ) {
+	if(searchdata['players'].length == 0){
+	$("#list-profiles").append(function(){
+		return "<div class='text-center'><p>No profiles related to the search term :(</p></div>";
+	});	
+	}
 
-	for (var i=0; i < searchdata['players'].length; i++){ 
+	if(searchdata['quotes'].length == 0){
+	$("#player-quotes").append(function(){
+		return "<br><div class='text-center'><p> No quotes related to the search term :(</p></div><br>";
+	});	
+	}
+
+	for (var i=0; i < searchdata['players'].length; i++){
 		playeravatar = searchdata['players'][i]['avatar_url'];
 		playerprofile = searchdata['players'][i]['description'];
 		playertags = searchdata['players'][i]['tags'];
-		
 
 		player_name = searchdata['players'][i]['name'];
 		player_name = replaceAll('%20', ' ', player_name);
@@ -61,7 +73,7 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
 					"</li>";
  		});
 
- 		$("#player-quotes").fadeIn('slow');		
+ 		$("#player-quotes").fadeIn('slow');
     }
 
 
@@ -75,3 +87,4 @@ function replaceAll(find, replace, str) {
 function escapeRegExp(string) {
     return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 }
+
