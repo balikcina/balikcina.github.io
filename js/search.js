@@ -25,8 +25,8 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
 		player_name = searchdata['players'][i]['name'];
 		player_name = replaceAll('%20', ' ', player_name);
 		player_name = player_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-		player_url = 'players.html?name=' + player_name
-`
+		player_url = 'players.html?name=' + player_name;
+
 		$("#list-profiles").append(function(){		
 			return 	"<ul class='list-group aligncenter'>"+
 					"<div>"+

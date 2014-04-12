@@ -19,8 +19,7 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/players.json?tag=" + params(
 	for (var i=0; i < nplayerdata.length; i++){ 
 		playeravatar = nplayerdata[i]['avatar_url'];
 		playerprofile = nplayerdata[i]['description'];
-		playertags = nplayerdata[i]['tags'];
-		
+		playertags = nplayerdata[i]['tags'];	
 
 		player_name = nplayerdata[i]['name'];
 		player_name = replaceAll('%20', ' ', player_name);

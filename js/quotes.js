@@ -33,6 +33,11 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 			return "<p>" + quotedescription + "</p>";
 		});	
 
+		for (var i=0; i < data['tags'].length; i++){
+			$("#taglist").append(function(){
+				return "<a href ='tags.html?tag=" + data['tags'][i] + "'>"+ data['tags'][i] + " </a>";
+			});	
+		}
 
 		$.getJSON("https://vast-scrubland-9059.herokuapp.com/players/" + data['player_id'] + ".json", function(nplayerdata){
 		
