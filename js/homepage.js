@@ -15,8 +15,8 @@ function loop(quotesdata, quote_id)
 		playerlink = 'players.html?name=' + player_name;
 		facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
 		
-		if(quotecontext != null){
-			thecontext = "<p>" + "On " + quotecontext + ":" + "</p>";
+		if(quotecontext != null && quotecontext != "" && quotecontext != " "){
+			thecontext = "On " + quotecontext + ": <p>";
 		}
 		else{
 			thecontext = " ";
