@@ -27,7 +27,7 @@ function loop(quotesdata, quote_id)
  				
  			return 	"<li class='list-group-item'><br>" +
  					thecontext + 
- 					"<div class='bubble' id='quote" + quote_id + "'>" +
+ 					"<div class='well well-sm' id='quote" + quote_id + "'>" +
  					"<h5 class='bigspace'>" + quotecontents + "</h5></div>" +
  					"<div class='btn-toolbar' role='toolbar'>" +
  					"<div class='btn-group pull-left' id='leftbutton'" + quote_id + "'>" +
