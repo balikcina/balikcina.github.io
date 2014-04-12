@@ -1,4 +1,8 @@
-@import url(https://fonts.googleapis.com/css?family=Lobster);
+.input-append input
+{
+  height:30px;
+  padding-left:25px;
+}
 
 .alignright {
 	text-align:right;
@@ -36,14 +40,6 @@
 .voffset8 { margin-top: 100px; }
 .voffset9 { margin-top: 150px; }
 
-.lobster {
-	font-family: 'Lobster', cursive;
-}
-
-lobster {
-	font-family: 'Lobster', cursive;
-}
-
 footer {
 	margin: 50px 0;
 }
@@ -61,7 +57,7 @@ footer {
 }
 
 .navbar { 
-    background: url(../img/dark_fish_skin.png) repeat 0 0;
+    background-color:#130e42;
 }
 
 .bigfont {
