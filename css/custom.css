@@ -91,9 +91,11 @@ footer {
 #topbanner {
 	padding:30px 30px; 
 	margin-bottom:50px; 
-	background-color:#2B2655;
+/*	background-color:#2B2655;*/
 	color:#FFFFFF;
 	letter-spacing: 1px;
+	background-image:url('../img/banner.svg'); 
+	background-size: contain;
 }
 
 #smallurl {
@@ -110,3 +112,4 @@ footer {
 .homeplayers img {
 	margin-bottom: 10px;
 }
+
