@@ -87,3 +87,11 @@ footer {
   font-size: 24px;
   font-weight: 200;
 }
+
+#topbanner {
+	border-radius: 10px;
+	padding:30px 30px; 
+	margin-bottom:50px; 
+	background-color:#2B2655;
+	color:#FFFFFF;
+}
