@@ -46,7 +46,13 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		playerlink = 'players.html?name=' + player_name;
 		
  		$("#quotebuttons").append(function(){ 				
- 			return 	"<div class='btn-group pull-right'>" +				
+ 			return 	"<div class='btn-toolbar' role='toolbar'>"+
+
+ 					// "<div class='btn-group pull-left smallurl'>" +
+ 					// "<div class='well well-sm' style:'width:10px;'>" + window.location.href + "</div>"
+ 					// "</div>" +
+
+ 					"<div class='btn-group pull-right'>" +				
 					"<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
  					"<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>" + "<i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></a>" + 					
@@ -54,8 +60,10 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
  					"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
 					// "<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +
 					"</div>"+
+
 					"<div class='clearfix'></div><br>" +
-					"</li>";
+
+					"</div>";
  		});		
 
 	});

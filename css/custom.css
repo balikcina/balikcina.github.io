@@ -95,3 +95,18 @@ footer {
 	color:#FFFFFF;
 	letter-spacing: 1px;
 }
+
+#smallurl {
+	font-size:10px;
+	text-decoration: none;
+}
+
+.homeplayers {
+	padding-left:30px; 
+	padding-right:30px;
+	text-align: center;
+}
+
+.homeplayers img {
+	margin-bottom: 10px;
+}

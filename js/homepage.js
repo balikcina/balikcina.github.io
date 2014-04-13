@@ -30,21 +30,28 @@ function loop(quotesdata, quote_id)
  					thecontext + 
  					"<div class='well well-sm' id='quote" + quote_id + "'>" +
  					"<h5 class='bigspace'>" + quotecontents + "</h5></div>" +
+
  					"<div class='btn-toolbar' role='toolbar'>" +
+
  					"<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +
  					"<a class='btn btn-default-sm vermiddle' href='" + quotelink + "'role='button'>" + "<i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></a>" +
  					"<a class='btn btn-default-sm vermiddle' href='" + quoteurl + "'role='button' target='_blank'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
  					
- 						// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
- 				// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
+ 					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
+ 					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
  					"</div>"+ 
+
  					"<div class='btn-group-sm pull-right'>" +
  					"<a class='btn btn-default vermiddle' id='whosaid" + quote_id + "'" + " href='" + playerlink + "'role='button'>" + "Who said this?" + "</a>" +					
  					
 					// "<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +
+					
 					"</div>"+
+
 					"<div class='clearfix'></div><br>" +
+
 					"</div></li>" +
+					
 					"<div id='hiddenlink" + quote_id + "'" + " style='display: none;'>" + 
 					quotelink
 					"</div>";
