@@ -11,7 +11,8 @@ params = function() {
 $(document).attr('title', 'Balik Cina - ' + params()['tag']);
 
 $("#tagname").html(function(){
-	return params()['tag'];
+	var tagname = replaceAll('%20', ' ', params()['tag']);
+	return tagname;
 });	
 
 $.getJSON("http://vast-scrubland-9059.herokuapp.com/players.json?tag=" + params()['tag'], function( nplayerdata ) {
