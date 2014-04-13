@@ -21,6 +21,16 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		quoteurl = data['source_url'];
 		viewcount = data["view_count"];
 		quotelink = 'quotes.html?quote_id=' + data['id'];
+		quotecontext = data["context"];
+
+		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
+			thecontext = "<em style='font-size: 16px;'>On " + quotecontext + ": </em><p>";
+		}
+
+		else{
+		 	thecontext = "";
+		}
+		
 
 		$(document).attr('title', 'Balik Cina - ' + quotetitle);
 		$('meta[name=og\\:title]').attr('content', 'Balik Cina!');
@@ -30,9 +40,19 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 			return quotetitle;
 		});
 
+		$("#contextquote").html(function(){
+			return thecontext;
+		});
+
 		$("#quotedescription").html(function(){
 			return "<p>" + quotedescription + "</p>";
 		});	
+
+		if(data['tags'].length == 0){
+			$("#taglist").append(function(){
+				return "None yet :(";
+			});
+		}	
 
 		for (var i=0; i < data['tags'].length; i++){
 			$("#taglist").append(function(){
@@ -44,6 +64,11 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		
 		player_name = nplayerdata["name"].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
 		playerlink = 'players.html?name=' + player_name;
+		playeravatar = nplayerdata["avatar_url"]
+
+		$("#authorquote").html(function(){
+			return "<img class='img-thumbnail smallimg' src='" + playeravatar + "'>" + player_name;
+		});
 		
  		$("#quotebuttons").append(function(){ 				
  			return 	"<div class='btn-toolbar' role='toolbar'>"+
@@ -53,11 +78,11 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
  					// "</div>" +
 
  					"<div class='btn-group pull-right'>" +				
-					"<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
- 					"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
- 					"<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>" + "<i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></a>" + 					
+					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
+ 				// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
+ 					"<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button' data-toggle='tooltip' data-placement='bottom' title='View Count'>" + "<i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></a>" + 					
  					"<a class='btn btn-default vermiddle' href='" + playerlink + "'role='button'>" + "<i class='fa fa-heart fa-lg'>&nbsp; </i>"  + player_name + "</a>" +
- 					"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
+ 					"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button' data-toggle='tooltip' data-placement='bottom' title='Link to Article'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
 					// "<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +
 					"</div>"+
 
