@@ -34,7 +34,7 @@ function loop(quotesdata, quote_id)
  					"<div class='btn-toolbar' role='toolbar'>" +
 
  					"<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +
- 					"<a class='btn btn-default-sm vermiddle' href='" + quotelink + "'role='button'>" + "<i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></a>" +
+ 					"<a class='btn btn-default-sm vermiddle' href='" + quotelink + "'role='button'>" + "<i class='fa fa-eye'>&nbsp; </i>" + "Views: " + viewcount + "</i></a>" +
  					"<a class='btn btn-default-sm vermiddle' href='" + quoteurl + "'role='button' target='_blank'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
  					
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
