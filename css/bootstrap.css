@@ -276,7 +276,7 @@ html {
 }
 body {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.42857143;
   letter-spacing: 0.2px;
   color: #130e42;
@@ -3741,8 +3741,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
   padding: 14px 15px;
   font-size: 20px;
-  line-height: 22px;
-  height: 50px;
+  height: 60px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -3776,7 +3775,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-radius: 1px;
 }
 .navbar-toggle .icon-bar + .icon-bar {
-  margin-top: 4px;
+  margin-top: 30%;
 }
 @media (min-width: 768px) {
   .navbar-toggle {
@@ -5898,4 +5897,21 @@ legend {
   border: 1px solid #ddd;
   border-top-width: 0;
   border-radius: 0 0 4px 4px;
+}
+
+.navbar-default button.navbar-toggle.collapsed:focus,
+.navbar-default button.navbar-toggle.collapsed{ background-color: transparent;
+    -webkit-transition:all .4s;
+    -moz-transition:all .4s;
+    -ms-transition:all .4s;
+    -o-transition:all .4s;
+    transition:all .4s;
+}
+.navbar-default button.navbar-toggle:focus,
+.navbar-default button.navbar-toggle.collapsed:hover{ background-color:#ddd;
+    -webkit-transition:all .4s;
+    -moz-transition:all .4s;
+    -ms-transition:all .4s;
+    -o-transition:all .4s;
+    transition:all .4s;
 }

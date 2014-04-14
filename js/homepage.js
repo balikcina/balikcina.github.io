@@ -1,6 +1,11 @@
 $("#popquote").hide();
 $("#quotebuttons").hide();
 
+$('.carousel').carousel({
+  interval: 3000,
+  pause: "false"
+});
+
 function loop(quotesdata, quote_id)
 {     
     $.getJSON('https://vast-scrubland-9059.herokuapp.com/players/' + quotesdata[quote_id]['player_id'] + '.json', function(nplayerdata){
