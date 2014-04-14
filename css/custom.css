@@ -5,7 +5,7 @@
 }
 
 .alignright {
-	text-align:right;
+	float:right;
 }
 
 .aligncenter {
@@ -13,7 +13,7 @@
 }
 
 .alignleft {
-	text-align:left;
+	float:left;
 }
 
 .alignjustify {
@@ -89,7 +89,6 @@ footer {
 }
 
 #topbanner {
-	margin-top: 70px;
 	padding:30px 30px; 
 	margin-bottom:50px; 
 /*	background-color:#2B2655;*/
@@ -180,7 +179,10 @@ footer {
 #myCarousel{
 	visibility: hidden;
 	display: none;
-	margin-bottom: 10%;
+}
+
+#mobilespace {
+	margin-bottom:70px;
 }
 
 @media (min-width: 500px) {
@@ -188,8 +190,12 @@ footer {
     visibility: visible;
     display: block;    
   }
-}
 
+  #mobilespace {
+	visibility: hidden;
+	display: none;
+  }
+}
 
 #headline{
 	text-shadow:1px 1px 0 #fff;
@@ -198,6 +204,11 @@ footer {
 	left:10%;
 	width:30%;
 	position: absolute;
+}
+
+blue {
+	color:#130e42;
+	font-weight: bold;
 }
 
 #headline h1{

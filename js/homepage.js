@@ -2,7 +2,7 @@ $("#popquote").hide();
 $("#quotebuttons").hide();
 
 $('.carousel').carousel({
-  interval: 4000,
+  interval: 4500,
   pause: "false"
 });
 
@@ -21,25 +21,29 @@ function loop(quotesdata, quote_id)
 		facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
 		
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
-			thecontext = "<em style='font-size: 12px;'>On " + quotecontext + ": </em><p>";
+			thecontext = "<em style='font-size: 12px;'>On " + quotecontext + ": </em>";
 		}
 
 		else{
 		 	thecontext = "";
 		}
 		
+		viewcount = "<small style='font-size: 12px;'>Seen: " + viewcount + "</small>";
 
  		$("#top-quotes").append(function(){
  				
  			return 	"<li class='list-group-item'><br>" +
- 					thecontext + 
+ 					"<div class='topbar'>"+
+ 					"<p class='alignleft'>" + thecontext + "</p>" +
+ 					"<p class='alignright'><i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></p>" + 					
+ 					"</div><div style='clear: both;'></div>"+
  					"<div class='well well-sm' id='quote" + quote_id + "'>" +
  					"<h5 class='bigspace'>" + quotecontents + "</h5></div>" +
 
  					"<div class='btn-toolbar' role='toolbar'>" +
 
  					"<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +
- 					"<a class='btn btn-default-sm vermiddle' href='" + quotelink + "'role='button'>" + "<i class='fa fa-eye'>&nbsp; </i>" + "Views: " + viewcount + "</i></a>" +
+ 					// "<a class='btn btn-default-sm vermiddle' role='button'>" + "<i class='fa fa-eye'>&nbsp; </i>" + "Seen: " + viewcount + "</i></a>" +
  					"<a class='btn btn-default-sm vermiddle' href='" + quoteurl + "'role='button' target='_blank'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
  					
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
