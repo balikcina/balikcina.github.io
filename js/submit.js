@@ -37,10 +37,10 @@ $("#submitbutton").click(function(){
                          data:data
                         })
        jqxhr.done(function(data) {
-         alert( JSON.stringify(data) );
+         alert("Quote received!");
        })
        jqxhr.fail(function() {
-         alert("fail");
+         alert("Oops, something went wrong!");
        })
 })
 
