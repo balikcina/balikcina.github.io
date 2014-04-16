@@ -7,7 +7,6 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/players.json', function(pla
     var player_name = player_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 
     $("#fAuthor").append(function(){
-      alert(player_id);
       return "<option value='" + player_id + "'>"  + player_name + "</option>";
     });
   }
