@@ -277,7 +277,7 @@ html {
 body {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.42857143;
+  line-height: 1.5;
   letter-spacing: 0.2px;
   color: #130e42;
   background-color: #ffffff;
@@ -3739,9 +3739,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  padding: 14px 15px;
+  padding: 15px 15px;
   font-size: 20px;
-  height: 60px;
+  height: 70px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -5784,11 +5784,16 @@ button.close {
     display: none !important;
   }
 }
+
 .navbar {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  letter-spacing: 180%;
+  background-color:#130e42;
 }
+
 .navbar-nav > li > a {
-  padding: 8px 12px;
+  /*padding: 8px 12px;*/
   margin: 12px 6px;
   border: 1px solid transparent;
   border-radius: 4px;
