@@ -11,7 +11,7 @@
     <link href="./css/custom.css" rel="stylesheet" media="screen">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="icon" href="favicon.png" type="image/png"/>
-<script type="text/javascript">
+    <script type="text/javascript">
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-49694442-2']);
@@ -48,40 +48,42 @@
                     <p>
                         Did you find something interesting that we missed? Let us know and we will add it to our collection!
                     </p>
-                    <p> 
-                        <b>Submission system still in development. Contact us at info@balikcina.com to contribute.</b>
-                    </p>
+<!--                     <p> <b>Submission system still in development. Contact us at info@balikcina.com to contribute.</b> 
+                    </p> -->
                 </p>
-                <hr>
-            </div>
+                <hr></div>
         </div>
 
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <div class="form-group">
-                    <label class="control-label" for="fQuote">Quote</label>
-                    <input type="text" class="form-control" id="fQuote" placeholder="Ideally, 20 words or less.">
-                </div>
+                <form id="submitform">
+                    <div class="form-group">
+                        <label class="control-label" for="fQuote">Quote</label>
+                        <input type="text" class="form-control" name="fQuote" placeholder="Ideally, 20 words or less."></div>
 
-                <div class="form-group">
-                    <label class="control-label" for="fDescription">Description</label>
-                    <textarea class="form-control" id="fDescription" rows="3" placeholder="Provide some context or a short description for the quote."></textarea>
-                </div>
+                    <div class="form-group">
+                        <label class="control-label" for="fDescription">Description</label>
+                        <textarea class="form-control" name="fDescription" rows="3" placeholder="Provide some context or a short description for the quote."></textarea>
+                    </div>
 
-                <div class="form-group">
-                    <label class="control-label" for="fAuthor">Author</label>
-                    <input type="text" class="form-control" id="fAuthor" placeholder="Who said it?">
-                </div>
+                    <div class="control-group">
+                        <label class="control-label" for="fAuthor">Select Author</label>
+                        <div class="controls">
+                            <select id="fAuthor" name="fAuthor" class="input">
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    <label class="control-label" for="fSource">Source</label>
-                    <input type="text" class="form-control" id="fSource" placeholder="Add a link to the article please.">
-                </div>
+                    <div class="form-group">
+                        <label class="control-label" for="fSource">Source</label>
+                        <input type="text" class="form-control" name="fSource" placeholder="Add a link to the article please."></div>
 
-                <button type='button' class='btn btn-default pull-right'>Done!</button>
+                    <button type='button' class='btn btn-default pull-right' id='submitbutton'>Done!</button>
 
-               </div>
+                </form>
+            </div>
+
             <br>
 
             <div class="col-md-2"></div>
@@ -92,6 +94,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/navbar.js"></script>
+    <script src="./js/submit.js"></script>
     <footer>
         <div id="gen-footer"></div>
     </footer>
