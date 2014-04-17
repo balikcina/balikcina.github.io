@@ -32,7 +32,7 @@ function loop(quotesdata, quote_id)
 
  		$("#top-quotes").append(function(){
  				
- 			return 	"<li class='list-group-item'><br>" +
+ 			return 	"<li class='list-group-item' id='box" + quote_id + "'><br>" +
  					"<div class='topbar'>"+
  					"<p class='alignleft'>" + thecontext + "</p>" +
  					"<p class='alignright'><i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></p>" + 					
@@ -42,20 +42,19 @@ function loop(quotesdata, quote_id)
 
  					"<div class='btn-toolbar' role='toolbar'>" +
 
- 					"<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +
- 					// "<a class='btn btn-default-sm vermiddle' role='button'>" + "<i class='fa fa-eye'>&nbsp; </i>" + "Seen: " + viewcount + "</i></a>" +
- 					"<a class='btn btn-default-sm vermiddle' href='" + quoteurl + "'role='button' target='_blank'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
+ 					"<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
+ 					"<a class='btn btn-default vermiddle' id='showcomments" + quote_id + "'>" + "Comments" + "</a>" +
  					
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
  					"</div>"+ 
 
  					"<div class='btn-group-sm pull-right'>" +
- 					"<a class='btn btn-default vermiddle' id='whosaid" + quote_id + "'" + " href='" + playerlink + "'role='button'>" + "Who said this?" + "</a>" +					
- 					
+ 					"<a class='btn btn-default vermiddle' id='whosaid" + quote_id + "'" + " href='" + playerlink + "'role='button'>" + player_name + "</a>" +					
+ 					"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button' target='_blank'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
 					// "<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +
 					
-					"</div>"+
+					"</div>" +
 
 					"<div class='clearfix'></div><br>" +
 
@@ -78,6 +77,13 @@ function loop(quotesdata, quote_id)
  		$("#quote" + quote_id).css( 'cursor', 'pointer' ); 			
  		$("#quote" + quote_id).click(function() {
 			window.open($('#hiddenlink' + quote_id).html(), '_self');
+		});
+
+ 		$("#showcomments" + quote_id).click(function() { 			
+			$("#box" + quote_id).append(function(){				  
+				return "testing" + "<div class='fb-comments' data-href='" + quotelink + "' data-numposts='10' data-colorscheme='light'></div>"
+			});
+			FB.XFBML.parse();
 		});
 
  		// $("#whosaid" + quote_id).click(function(){
