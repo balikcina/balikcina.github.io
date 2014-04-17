@@ -55,13 +55,23 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
 		quotedate = searchdata['quotes'][i]["source_date"];
 		quotelink = 'quotes.html?quote_id=' + searchdata['quotes'][i]['id'];
 		playerlink = 'players.html?name=' + searchdata['quotes'][i]['player_name'];
-		
+		quotecontext = searchdata['quotes'][i]["context"];
+
+		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
+			thecontext = "<em style='font-size: 16px;'>On " + quotecontext + ": </em>";
+		}
+
+		else{
+		 	thecontext = "";
+		}		
 
 		$("#player-quotes").append(function(){
  				
  			return 	"<li class='list-group-item'>" +
+ 			 		"<div class='topbar'>"+
+ 					"<p class='alignleft'>" + thecontext + "</p>" +
+ 					"</div><div style='clear: both;'></div>"+
  					"<div class='well well-lg'><h4>" + quotecontents + "</h4></div>" +
-
  					"<div class='btn-group pull-right'>" +				
 					"<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" + 					
