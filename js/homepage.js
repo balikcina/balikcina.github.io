@@ -44,6 +44,7 @@ function loop(quotesdata, quote_id)
 
  					"<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
  					"<a class='btn btn-default vermiddle' id='showcomments" + quote_id + "'>" + "Comments" + "</a>" +
+ 					"<a class='btn btn-default vermiddle' href='https://twitter.com/share' class='twitter-share-button' data-url='" + quotelink + "' data-text='" + quotecontents + +"' data-counturl='" + quotelink + "' data-related='balikcina' data-hashtags='balikcina'><i class='fa fa-twitter fa-lg'></i></a>"
  					
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
@@ -64,6 +65,8 @@ function loop(quotesdata, quote_id)
 					quotelink
 					"</div>";
  		});		
+
+
 
  		$("#top-players").append(function(){
  				
