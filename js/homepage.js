@@ -79,9 +79,10 @@ function loop(quotesdata, quote_id)
 			window.open($('#hiddenlink' + quote_id).html(), '_self');
 		});
 
- 		$("#showcomments" + quote_id).click(function() { 			
-			$("#box" + quote_id).append(function(){				  
-				return "<div class='fb-comments' data-href='http://balikcina.com/" + $("#hiddenlink" + quote_id).html() + "' data-numposts='10' data-colorscheme='light'></div>"
+ 		$("#showcomments" + quote_id).one("click", function() {	
+			$("#box" + quote_id).append(function(){
+      			width = $('.col-md-6').width()*0.95;				  
+				return "<div class='fb-comments' data-href='http://balikcina.com/" + $("#hiddenlink" + quote_id).html() + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
 			});
 			FB.XFBML.parse();
 		});
@@ -152,4 +153,3 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/tags.json', function(tagsda
 
 
  });
-
