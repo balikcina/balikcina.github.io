@@ -7,7 +7,7 @@
     <link href="./css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="./css/custom.css" rel="stylesheet" media="screen">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<script type="text/javascript">
+    <script type="text/javascript">
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-49694442-2']);
@@ -21,7 +21,7 @@
 
 </script>
 
- </head>
+</head>
 
 <body>
 
@@ -32,75 +32,70 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="page-header">
-                    <h1 class="text-center">
-                        <div id="searchname">Search</div>
-                        <br>
-                        <form role="search" action="search.html">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="key" placeholder="Try a name, topic or phrase, e.g. Chua Soi Lek, BN, Kangkung">
-                                <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-default pull-right" type="button"> <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
-                        </p>
-                    </h1>
+
+                <h1><div class="text-center" id="searchname">Search</div></h1>
+
+                <div class="input-group custom-search-form">
+                    <form role="search" action="search.html" id="cari">
+                        <input type="text" class="form-control" name="key" placeholder="Example: Chua Soi Lek, DAP, Rogol, Kangkung"></form>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit" form="cari">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
                 </div>
+                <br><hr>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">Profiles</div>
-                
-                <div class="panel-body" id="list-profiles">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Profiles</div>
+
+                    <div class="panel-body" id="list-profiles"></div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-8">
+            <div class="col-md-8">
 
-            <div class="panel panel-default">
+                <div class="panel panel-default">
                     <div class="panel-heading">Quotes</div>
-    
 
                     <ul class="list-group">
                         <div id="player-quotes"></div>
                     </ul>
+                </div>
+
             </div>
 
+            <!-- <div class="col-md-4">
+            <blockquote>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                </p>
+
+                <small>The Star (2004 May 13)</small>
+            </blockquote>
         </div>
-
-        <!-- <div class="col-md-4">
-        <blockquote>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-            </p>
-
-            <small>The Star (2004 May 13)</small>
-        </blockquote>
+        -->
     </div>
-    -->
-</div>
 
-<!-- <div class="row">
-<div class="col-md-8">
-    <div class="alignright">
-        <button type="button" class="btn btn-default" id="nextquote">See More</button>
+    <!-- <div class="row">
+    <div class="col-md-8">
+        <div class="alignright">
+            <button type="button" class="btn btn-default" id="nextquote">See More</button>
+        </div>
     </div>
-</div>
 </div>
 -->
 </div>
 
-    <footer>
-        <div id="gen-footer"></div>
-    </footer>
+<footer>
+<div id="gen-footer"></div>
+</footer>
 
 <script src="//code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>

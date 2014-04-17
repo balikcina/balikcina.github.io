@@ -23,11 +23,23 @@ function loop(quotesdata, quote_id)
 		quotedate = quotesdata[quote_id]["source_date"];
 		viewcount = quotesdata[quote_id]["view_count"];
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
-		playerlink = 'players.html?name=' + player_name;		
+		playerlink = 'players.html?name=' + player_name;
+		quotecontext = quotesdata[quote_id]["context"];
+
+		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
+			thecontext = "<em style='font-size: 16px;'>On " + quotecontext + ": </em>";
+		}
+
+		else{
+		 	thecontext = "";
+		}		
 
  		$("#top-quotes").append(function(){
  				
  			return 	"<li class='list-group-item'>" +
+ 					"<div class='topbar'>"+
+ 					"<p class='alignleft'>" + thecontext + "</p>" +
+ 					"</div><div style='clear: both;'></div>"+
  					"<div class='well well-lg'><h4>" + quotecontents + "</h4></div>" +
  					"<div class='btn-toolbar' role='toolbar'>" +
  					"<div class='btn-group pull-left'>" +				

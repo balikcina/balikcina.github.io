@@ -10,7 +10,7 @@ function loop(quotesdata, quote_id)
 {     
     $.getJSON('https://vast-scrubland-9059.herokuapp.com/players/' + quotesdata[quote_id]['player_id'] + '.json', function(nplayerdata){
 		var player_name = nplayerdata["name"].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
-		
+		playeravatar = nplayerdata['avatar_url'];
 		quoteurl = quotesdata[quote_id]['source_url'];
 		quotecontents = quotesdata[quote_id]["quote"];
 		quotedate = quotesdata[quote_id]["source_date"];
@@ -64,6 +64,13 @@ function loop(quotesdata, quote_id)
 					"<div id='hiddenlink" + quote_id + "'" + " style='display: none;'>" + 
 					quotelink
 					"</div>";
+ 		});		
+
+ 		$("#top-players").append(function(){
+ 				
+ 			return 	"<li class='list-group-item'><br>" +
+ 					"<img class='avatar img-thumbnail' src='" + playeravatar + "'>" +
+ 					"</li>";
  		});		
 
  		$("#top-quotes").fadeIn('slow');

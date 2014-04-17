@@ -44,12 +44,25 @@ function getQuotes(quotesdata, quote_id){
 		quotecontents = quotesdata[quote_id]["quote"];
 		quotedate = quotesdata[quote_id]["source_date"];
 		viewcount = quotesdata[quote_id]["view_count"];
+		quotecontext = quotesdata[quote_id]["context"];
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
 		// playerlink = 'players.html?name=' + params()['name'];
+
+		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
+			thecontext = "<em style='font-size: 16px;'>On " + quotecontext + ": </em>";
+		}
+
+		else{
+		 	thecontext = "";
+		}		
+
 
 		$("#player-quotes").append(function(){
  				
  			return 	"<li class='list-group-item'>" +
+ 			 		"<div class='topbar'>"+
+ 					"<p class='alignleft'>" + thecontext + "</p>" +
+ 					"</div><div style='clear: both;'></div>"+
  					"<div class='well well-lg'><h4>" + quotecontents + "</h4></div>" +
 
  					"<div class='btn-group pull-right'>" +				
