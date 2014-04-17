@@ -14,6 +14,7 @@ jQuery.expr[":"].Contains = jQuery.expr.createPseudo(function(arg) {
     };
 });
 
+$( document ).ready(function() {
 $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote_id'] + ".json", function( data ) {
 		quotedescription = data['source'];
 		quotetitle = data['quote'];
@@ -101,4 +102,4 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 
 });
 
-
+});
