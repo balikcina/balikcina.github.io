@@ -19,8 +19,10 @@ function loop(quotesdata, quote_id)
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
 		playerlink = 'players.html?name=' + player_name;
 		facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
-
-		twitterlink = 'https://twitter.com/share?text=' + quotecontents + ' #balikcina' +'&url=' + quotelink;
+		
+		encodedquote = encodeURIComponent(quotecontents);
+		encodedurl = encodeURIComponent(quotelink);
+		twitterlink = 'https://twitter.com/share?text=' + encodedquote + '&url=' + encodedurl;
 
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
 			thecontext = "<em style='font-size: 12px;'>On " + quotecontext + ": </em>";
@@ -100,7 +102,11 @@ function loop(quotesdata, quote_id)
  	}); 
 }
 
-$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json', function(quotesdata) {	
+$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json', function(quotesdata) {
+	$("#quotenum").html(function(){
+		return quotesdata.length;
+	});
+
 	var foo = range(0,quotesdata.length);
 	$("#top-quotes").hide();
 
