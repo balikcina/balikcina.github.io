@@ -167,9 +167,16 @@ background-image: linear-gradient(to top, #D0D0D0 0%, #FFFFFF 10%, #FFFFFF 100%)
 
 #bgimg {
 	height:100%;
+/*	height:100%;
 	background-position: bottom right;
-	background-repeat: no-repeat;
-	z-index: 1;
+	background-repeat: no-repeat;*/
+}
+
+#bgimg img {
+	position: absolute;
+	right:0px;
+	bottom:0px;
+	width: 50%;
 }
 
 .section {
@@ -198,7 +205,7 @@ background-image: linear-gradient(to top, #D0D0D0 0%, #FFFFFF 10%, #FFFFFF 100%)
 }
 
 #headline{
-	text-shadow:1px 1px 0 #fff;
+	text-shadow:1px 1px 0 #fff;	
 	z-index:1;
 	bottom:15%;
 	left:10%;
@@ -217,6 +224,7 @@ blue {
 	font-size:24px;
 	font-weight:600;
 	line-height:80%;
+	line-height: 120%;
 }
 
 #headline h2{
@@ -234,7 +242,7 @@ blue {
 	line-height:60px;
 	color: #000000;
 	left:10%;
-	top:25%;
+	top:18%;
 	width:50%
 }
 
