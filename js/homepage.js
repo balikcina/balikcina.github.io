@@ -81,7 +81,7 @@ function loop(quotesdata, quote_id)
 
  		$("#showcomments" + quote_id).click(function() { 			
 			$("#box" + quote_id).append(function(){				  
-				return "testing" + "<div class='fb-comments' data-href='http://balikcina.com/" + quotelink + "' data-numposts='10' data-colorscheme='light'></div>"
+				return "testing" + "<div class='fb-comments' data-href='http://balikcina.com/" + $("#hiddenlink" + quote_id).html() + "' data-numposts='10' data-colorscheme='light'></div>"
 			});
 			FB.XFBML.parse();
 		});
