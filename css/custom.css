@@ -259,3 +259,48 @@ blue {
 .fb-comments iframe span[style]{width: 100% !important;}
 .fb-like-box span{width: 100% !important;}
 .fb-like-box iframe span[style]{width: 100% !important;} }
+
+.quote {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.quote h1 {
+	font-size: 130%;
+	font-weight: 900;
+	text-align: left;
+	display:inline;
+}
+
+.quote h2 {
+	font-size: 120%;
+	font-weight: 600;
+	text-align: left;
+	display:inline;
+}
+
+.quote right {
+	float: right;
+}
+
+.quote left {
+	float: left;
+}
+
+.quote h3 {
+	font-size: 90%;
+	font-weight: normal;
+	display:inline;
+}
+
+.topbar {
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.quotebar {
+	margin-top: 0%;
+	margin-bottom: 1%;
+}
+
+.hoverquote {
+	background-color:#E7E7EC;
+}
