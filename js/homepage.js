@@ -19,7 +19,9 @@ function loop(quotesdata, quote_id)
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
 		playerlink = 'players.html?name=' + player_name;
 		facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
-		
+
+		twitterlink = 'https://twitter.com/share?text=' + quotecontents + ' #balikcina' +'&url=' + quotelink;
+
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
 			thecontext = "<em style='font-size: 12px;'>On " + quotecontext + ": </em>";
 		}
@@ -44,7 +46,7 @@ function loop(quotesdata, quote_id)
 
  					"<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
  					"<a class='btn btn-default vermiddle' id='showcomments" + quote_id + "'>" + "Comments" + "</a>" +
- 					"<a class='btn btn-default vermiddle' href='https://twitter.com/share' class='twitter-share-button' data-url='" + quotelink + "' data-text='" + quotecontents + +"' data-counturl='" + quotelink + "' data-related='balikcina' data-hashtags='balikcina'><i class='fa fa-twitter fa-lg'></i></a>" +
+ 					"<a class='btn btn-default vermiddle' href='" + twitterlink + "'><i class='fa fa-twitter fa-lg'></i></a>" +
  					
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
@@ -154,17 +156,3 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/tags.json', function(tagsda
 
 
  });
-
-$( document ).ready(function() {
-
-window.twttr = (function (d,s,id) {
-  var t, js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
-  js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
-  return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
-}(document, "script", "twitter-wjs"));
-
-
-twttr.widgets.load();
-
-});
