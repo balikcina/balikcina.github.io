@@ -48,6 +48,12 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 			return "<p>" + quotedescription + "</p>";
 		});	
 
+		$("#commentbox").html(function(){
+			return "<div class='fb-comments' data-href='http://balikcina.com/" + quotelink + "' data-numposts='10' data-colorscheme='light'></div>"
+			FB.XFBML.parse();
+		});	
+
+
 		if(data['tags'].length == 0){
 			$("#taglist").append(function(){
 				return "None yet :(";
