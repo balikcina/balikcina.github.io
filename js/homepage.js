@@ -108,7 +108,10 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json', function(quot
 	});
 
 	var foo = range(0,quotesdata.length);
-	$("#top-quotes").hide();
+
+	$("#top-quotes").html(function(){
+		return '';
+	});
 
     for (var i=1; i<=10; i++){
     	var quote_id = foo.splice(Math.floor(Math.random() * quotesdata.length-1-i), 1)[0];   	
