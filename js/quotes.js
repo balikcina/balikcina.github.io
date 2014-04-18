@@ -50,8 +50,7 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		});	
 
 		$("#commentbox").html(function(){
-			return "<div class='fb-comments' data-href='http://balikcina.com/" + quotelink + "' data-numposts='10' data-colorscheme='light'></div>"
-			FB.XFBML.parse();
+			return "<div class='fb-comments' data-href='http://balikcina.com/" + quotelink + "' data-numposts='10' data-colorscheme='light'></div>"			
 		});	
 
 
@@ -101,5 +100,5 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 	});
 
 });
-
+FB.XFBML.parse();
 });
