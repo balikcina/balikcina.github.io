@@ -39,16 +39,16 @@ function loop(quotesdata, quote_id)
 		// Generate quote boxes
  		$("#top-quotes").append(function(){
  				
- 			return 	"<div class='quote' id='box" + quote_id + "'>" +
+ 			return 	"<div class='quote'>" +
  					"<div class='row'>" +
 
  					// Avatar sub-box
- 					"<div class='col-md-2'>" +
-						"<img class='img-thumbnail' style='float:right' width='100%' src='" + playeravatar + "'>" +
+ 					"<div class='col-xs-2 nopadding'>" +
+ 						"<a href='" + playerlink + "'>" + "<img class='img-thumbnail' style='float:right' width='100%' src='" + playeravatar + "'></a>" +
  					"</div>" +
 
  					// Quotes sub-box
- 					"<div class='col-md-10'>" +
+ 					"<div class='col-xs-10' id='box" + quote_id + "'>" +
  					"<div class='topbar'>"+
  					"<left>" +
  					"<h1>" + player_name + "&nbsp; </h1>" +
@@ -84,7 +84,7 @@ function loop(quotesdata, quote_id)
  				// 	"<a class='btn btn-default vermiddle' id='whosaid" + quote_id + "'" + " href='" + playerlink + "'role='button'>" + player_name + "</a>" +					
  				// 	"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button' target='_blank'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
 					// // "<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +
-					"<hr>" + 
+					//"<hr>" + 
 					"</div>" + //close quote sub-box
 
 					"<div id='hiddenlink" + quote_id + "'>" + quotelink + "</div>" + 
@@ -110,7 +110,7 @@ function loop(quotesdata, quote_id)
  		$("#showcomments" + quote_id).css( 'cursor', 'pointer' );
  		$("#showcomments" + quote_id).one("click", function() {	
 			$("#box" + quote_id).append(function(){
-      			width = $('#top-quotes').width()*0.95;				  
+      			width = $("#box" + quote_id).width()*0.95;				  
 				return "<div id='commentbox" + quote_id + "' class='fb-comments' data-href='http://balikcina.com/" + $("#hiddenlink" + quote_id).html() + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
 			});
 			FB.XFBML.parse();
