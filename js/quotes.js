@@ -20,6 +20,7 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		quotetitle = data['quote'];
 		quotedate = data["source_date"];
 		quoteurl = data['source_url'];
+		quote_id = data['id'];
 		viewcount = data["view_count"];
 		quotelink = 'quotes.html?quote_id=' + data['id'];
 		quotecontext = data["context"];
@@ -49,9 +50,21 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 			return "<p>" + quotedescription + "</p>";
 		});	
 
-		$("#commentbox").html(function(){
-			return "<div class='fb-comments' data-href='http://balikcina.com/" + quotelink + "' data-numposts='10' data-colorscheme='light'></div>"			
-		});	
+		// Commment Box
+ 		$("#showcomments").css( 'cursor', 'pointer' );
+ 		$("#showcomments").one("click", function() {
+ 			
+			$("#commentshehe").append(function(){
+      			width = $("#commentshehe").width();				  
+				return "<br><div id='commentbox" + quote_id + "' class='fb-comments' data-href='http://balikcina.com/" + $(location).attr('href') + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
+			});
+			FB.XFBML.parse();
+			$('#commentbox').css('display','none');
+		});
+
+		$("#showcomments").click(function() {	
+			$("#commentbox").toggle();
+		});
 
 
 		if(data['tags'].length == 0){
@@ -100,5 +113,5 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 	});
 
 });
-FB.XFBML.parse();
+
 });
