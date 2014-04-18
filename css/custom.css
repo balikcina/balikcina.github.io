@@ -267,6 +267,7 @@ blue {
 	padding-top: 25px;
 	padding-bottom: 25px;
 }
+
 .quote h1 {
 	font-size: 130%;
 	font-weight: 900;
@@ -276,7 +277,7 @@ blue {
 
 .quote h2 {
 	font-size: 120%;
-	font-weight: 600;
+	font-weight: 500;
 	text-align: left;
 	display:inline;
 }
@@ -287,6 +288,14 @@ blue {
 
 .quote left {
 	float: left;
+}
+
+.bottombar {
+	padding-top: 2%;
+}
+
+.bottombar a{
+	padding-right: 2%;
 }
 
 .quote h3 {

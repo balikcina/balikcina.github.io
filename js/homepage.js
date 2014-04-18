@@ -51,10 +51,9 @@ function loop(quotesdata, quote_id)
  					"<div class='col-xs-10' id='box" + quote_id + "'>" +
  					"<div class='topbar'>"+
  					"<left>" +
- 					"<h1>" + player_name + "&nbsp; </h1>" +
- 					"<h3><a href='" + quoteurl + "' target='_blank'>" + quotedate + "</a></h3>" +
-
+ 					"<h1>" + player_name + "&nbsp; </h1>" + 					
  					"</left>" +
+
  					"<right>" +
  					"<h3>" + viewcount + "</i></h3>" +
  					"</right>" + 	
@@ -72,7 +71,10 @@ function loop(quotesdata, quote_id)
 
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
- 					"<a class='alignleft' id='showcomments" + quote_id + "'>" + "Comments" + "</a>" +
+ 					"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i>Comments</a> &nbsp;" +
+ 					"<a href='" + quotelink + "' target='_blank'><i class='fa fa-ellipsis-h fa-lg'>&nbsp;</i>Details</a> &nbsp;" +
+ 					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
+
  					"<a class='alignright' href='" + twitterlink + "' target='_blank'><i class='fa fa-twitter fa-lg'></i>&nbsp;</a>" +
  					"<a class='alignright' href='" + facebooklink + "' target='_blank'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
@@ -111,7 +113,7 @@ function loop(quotesdata, quote_id)
  		$("#showcomments" + quote_id).one("click", function() {	
 			$("#box" + quote_id).append(function(){
       			width = $("#box" + quote_id).width()*0.95;				  
-				return "<div id='commentbox" + quote_id + "' class='fb-comments' data-href='http://balikcina.com/" + $("#hiddenlink" + quote_id).html() + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
+				return "<br><div id='commentbox" + quote_id + "' class='fb-comments' data-href='http://balikcina.com/" + $("#hiddenlink" + quote_id).html() + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
 			});
 			FB.XFBML.parse();
 			$('#commentbox' + quote_id).css('display','none');

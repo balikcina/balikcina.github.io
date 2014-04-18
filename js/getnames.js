@@ -16,54 +16,137 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/players.json', function(pla
 function loop(quotesdata, quote_id)
 {	
     $.getJSON('https://vast-scrubland-9059.herokuapp.com/players/' + quotesdata[quote_id]['player_id'] + '.json', function(nplayerdata){
-		var player_name = nplayerdata["name"].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
 		
+		// Much variables, wow.
+		player_name = nplayerdata["name"].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
+		playeravatar = nplayerdata['avatar_url'];
 		quoteurl = quotesdata[quote_id]['source_url'];
 		quotecontents = quotesdata[quote_id]["quote"];
 		quotedate = quotesdata[quote_id]["source_date"];
+		quotecontext = quotesdata[quote_id]["context"];
 		viewcount = quotesdata[quote_id]["view_count"];
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
 		playerlink = 'players.html?name=' + player_name;
-		quotecontext = quotesdata[quote_id]["context"];
+		facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
+		viewcount = "Views: " + viewcount;
+		encodedquote = encodeURIComponent(quotecontents);
+		encodedurl = encodeURIComponent(quotelink);
+		twitterlink = 'https://twitter.com/share?text=' + encodedquote + '&url=' + encodedurl;
 
+		// Empty space if no context
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
-			thecontext = "<em style='font-size: 16px;'>On " + quotecontext + ": </em>";
+			thecontext = "<em style='font-size: 12px;'>On " + quotecontext + ": </em>";
 		}
 
 		else{
 		 	thecontext = "";
-		}		
+		}
 
  		$("#top-quotes").append(function(){
  				
- 			return 	"<li class='list-group-item'>" +
+ 			return 	"<div class='quote'>" +
+ 					"<div class='row'>" +
+
+ 					// Avatar sub-box
+ 					"<div class='col-xs-2 nopadding'>" +
+ 						"<a href='" + playerlink + "'>" + "<img class='img-thumbnail' style='float:right' width='100%' src='" + playeravatar + "'></a>" +
+ 					"</div>" +
+
+ 					// Quotes sub-box
+ 					"<div class='col-xs-10' id='box" + quote_id + "'>" +
  					"<div class='topbar'>"+
- 					"<p class='alignleft'>" + thecontext + "</p>" +
- 					"</div><div style='clear: both;'></div>"+
- 					"<div class='well well-lg'><h4>" + quotecontents + "</h4></div>" +
- 					"<div class='btn-toolbar' role='toolbar'>" +
- 					"<div class='btn-group pull-left'>" +				
-					"<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
- 					"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
- 					"<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>" + "<i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></a>" +
- 					"</div>"+ 
- 					"<div class='btn-group pull-right'>" +					
- 					"<a class='btn btn-default vermiddle' href='" + playerlink + "'role='button'>" + "<i class='fa fa-heart fa-lg'>&nbsp; </i>"  + player_name + "</a>" +
- 					"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
-					"<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +
-					"</div>"+
-					"<div class='clearfix'></div><br>" +
-					"</div></li>";
- 		});		
+ 					"<left>" +
+ 					"<h1>" + player_name + "&nbsp; </h1>" + 					
+ 					"</left>" +
+
+ 					"<right>" +
+ 					"<h3>" + viewcount + "</i></h3>" +
+ 					"</right>" + 	
+ 					"<div style='clear: both;'></div>" +
+ 					"</div>" +  // Close topbar
+
+ 					"<div class='midbar'>"+
+ 					thecontext +
+ 					"</div>" + // Close midbar
+ 					"<div style='clear: both;'></div>" +
+
+ 					"<div class='quotebar' id='quote" + quote_id + "'>" +
+ 					"<h2>" + quotecontents + "</h2>" +
+ 					"</div>" + // Close quote bar
+
+ 					"<div class='bottombar'><h3>" +
+ 					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
+ 					"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i></a> &nbsp;" +
+ 					"<a href='" + quotelink + "' target='_blank'><i class='fa fa-ellipsis-h fa-lg'>&nbsp;</i>Details</a> &nbsp;" +
+ 					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
+
+ 					"<a class='alignright' href='" + twitterlink + "' target='_blank'><i class='fa fa-twitter fa-lg'></i>&nbsp;</a>" +
+ 					"<a class='alignright' href='" + facebooklink + "' target='_blank'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +
+ 					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
+ 					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
+ 					"</h3></div>" + // Close bottom bar
+ 					"<div class='clearfix'></div>" +
+
+ 				// 	"<div class='btn-group-sm pull-right'>" +
+ 				// 	"<a class='btn btn-default vermiddle' id='whosaid" + quote_id + "'" + " href='" + playerlink + "'role='button'>" + player_name + "</a>" +					
+ 				// 	"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button' target='_blank'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
+					// // "<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +
+					//"<hr>" + 
+					"</div>" + //close quote sub-box
+
+					"<div id='hiddenlink" + quote_id + "'>" + quotelink + "</div>" + 
+
+					"</div></div>" + // Close quote box, rows
+					"<div class='clearfix'></div>";	
+
+ 		});
 
  		$("#top-quotes").fadeIn('slow');
 
+		// Hide quote link, any better way to do this?
+		$('#hiddenlink' + quote_id).css('display','none');
+
+		// Ugly animation hehe
+ 		$("#top-quotes").fadeIn('slow');
+
+ 		// Link to Quotes
+ 		$("#quote" + quote_id).css( 'cursor', 'pointer' );
+ 		$("#quote" + quote_id).click(function() {
+			window.open($("#hiddenlink" + quote_id).html(), '_self');
+		});
+
+		// Generate and Toggle FB Comment Box
+ 		$("#showcomments" + quote_id).css( 'cursor', 'pointer' );
+ 		$("#showcomments" + quote_id).one("click", function() {	
+			$("#box" + quote_id).append(function(){
+      			width = $("#box" + quote_id).width()*0.95;				  
+				return "<br><div id='commentbox" + quote_id + "' class='fb-comments' data-href='http://balikcina.com/" + $("#hiddenlink" + quote_id).html() + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
+			});
+			FB.XFBML.parse();
+			$('#commentbox' + quote_id).css('display','none');
+		});
+
+		$("#showcomments" + quote_id).click(function() {	
+			$("#commentbox" + quote_id).toggle();
+		});
+
+		$("#box" + quote_id).mouseover(function(){
+   			$(this).addClass('hoverquote');
+		});
+        
+		$("#box" + quote_id).mouseout(function(){
+   			$(this).removeClass('hoverquote');
+		});
 	});
 }
 
 $.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json', function(quotesdata) {	
 	var foo = range(0,quotesdata.length);
 	$("#top-quotes").hide();
+
+	$("#top-quotes").html(function(){
+		return '';
+	});
 
     for (var i=1; i<=10; i++){
     	var quote_id = foo.splice(Math.floor(Math.random() * quotesdata.length-1-i), 1)[0];   	

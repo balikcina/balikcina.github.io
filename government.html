@@ -25,6 +25,14 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
     <nav class="navbar navbar-default" role="navigation">
         <div id="gen-navbar"></div>
@@ -48,6 +56,16 @@
 
 	<div class="container">
 		<div class="row">
+
+			<div class="col-md-1"></div>
+			
+			<div class="col-md-7">
+				<div class="panel panel-default">
+					<div class="panel-heading">Top Quotes</div>
+				</div>				
+				<div id="top-quotes"><i class="fa fa-spinner fa-spin fa-lg aligncenter"></i></div>					
+			</div>
+
 			<div class="col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-heading">Names</div>
@@ -57,20 +75,11 @@
 				</div>  
 			</div>
 
-			<div class="col-md-9">
-				<div class="panel panel-default">
-					<div class="panel-heading">Top Quotes</div>
-					<div class="panel-body">
-					</div>
-					<ul class="list-group">
-						<div id="top-quotes">							
-						</div>
-					</ul>
-				</div>
-			</div>  
-		</div>						
+			<div class="col-md-1"></div>
+
+		</div>  
+	</div>						
 			
-	</div>	
 
     <footer>
         <div id="gen-footer"></div>
