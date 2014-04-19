@@ -139,8 +139,8 @@ function loop(quotesdata, quote_id)
  	    	{
       		method: 'feed',
        		name: 'Balik Cina | Beautiful Quotes by Malaysian Politicians',
-       		caption: $("#player_name" + quote_id).html() + ' said:',
-       		description: (fbquotecontents + ' | Visit Balik Cina to discover the best Malaysia has to offer!'),
+       		caption: $("#player_name" + quote_id).html(),
+       		description: (fbquotecontents),
        		link: fbquotelink,
        		picture: 'balikcina.com/img/balikcina.jpg',
       		},
