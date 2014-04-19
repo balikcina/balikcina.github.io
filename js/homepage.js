@@ -23,7 +23,7 @@ function loop(quotesdata, quote_id)
 		viewcount = "Views: " + viewcount;
 		encodedquote = replaceAll('\'', '%27', quotecontents);
 		encodedquote = encodeURIComponent(encodedquote);
-		encodedurl = 'http://www.balikcina.com/' + quotelink;
+		encodedurl = 'http://balikcina.com/' + quotelink;
 		encodedurl = encodeURIComponent(encodedurl);
 		twitterlink = 'https://twitter.com/share?text=' + encodedquote + ' ' + '&url=' + encodedurl;
 
