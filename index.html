@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Balik Cina - The finest of beautiful and inspirational quotes by Malaysian politicians. Discover the best of Malaysia here. You tak suka, you keluar.">
     <meta name="author" content="Balik Cina">
+    <meta property="fb:app_id" content="704162499629518"/>
     <meta property="og:title" content="Balik Cina - You tak suka, you keluar" />
     <meta property="og:type" content="article" />
     <meta property="og:description" content="Your favourite quotes by Malaysian politicians here. Barisan Nasional? Pakatan Rakyat? We have them all." />
@@ -35,19 +36,52 @@
 <body>
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '704162499629518',
+          status     : true,
+          xfbml      : true
+        });
+    FB.ui(
+      {
+       method: 'feed',
+       name: 'The Facebook SDK for Javascript',
+       caption: 'Bringing Facebook to the desktop and mobile web',
+       description: (
+          'A small JavaScript library that allows you to harness ' +
+          'the power of Facebook, bringing the user\'s identity, ' +
+          'social graph and distribution power to your site.'
+       ),
+       link: 'https://developers.facebook.com/docs/reference/javascript/',
+       picture: 'http://www.fbrell.com/public/f8.jpg'
+      },
+      function(response) {
+        if (response && response.post_id) {
+          alert('Post was published.');
+        } else {
+          alert('Post was not published.');
+        }
+      }
+    );
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+      
+    </script>
 
     <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
         <div id="gen-navbar"></div>
     </nav>
     <!-- <div class="fb-like" data-href="http://www.balikcina.com" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 -->
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
     <div id="headline">
