@@ -51,7 +51,7 @@ function loop(quotesdata, quote_id)
  					"<div class='col-xs-10' id='box" + quote_id + "'>" +
  					"<div class='topbar'>"+
  					"<left>" +
- 					"<h1>" + player_name + "&nbsp; </h1>" + 					
+ 					"<h1>" + "<span id='player_name" + quote_id + "'>" + player_name + "</span>&nbsp;</h1>" + 					
  					"</left>" +
 
  					"<right>" +
@@ -65,9 +65,9 @@ function loop(quotesdata, quote_id)
  					"</div>" + // Close midbar
  					"<div style='clear: both;'></div>" +
 
- 					"<div class='quotebar' id='quote" + quote_id + "'>" +
- 					"<h2>" + quotecontents + "</h2>" +
- 					"</div>" + // Close quote bar
+ 					"<h2><div class='quotebar' id='quote" + quote_id + "'>" +
+ 					quotecontents +
+ 					"</div></h2>" + // Close quote bar
 
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
@@ -131,15 +131,17 @@ function loop(quotesdata, quote_id)
    			$(this).removeClass('hoverquote');
 		});
 
-		$("#fbfeed" + quote_id).click(function(){   			
+		$("#fbfeed" + quote_id).click(function(){
+		quotecontents = replaceAll('\'', '\\\'', $("#quote" + quote_id).html()); 
+					
  	    FB.ui(
  	    	{
       		method: 'feed',
-       		name: 'Balik Cina - Discover the best Malaysia has to offer',
+       		name: $("#player_name" + quote_id).html(),
        		// caption: 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html(),
        		// description: $("#quote" + quote_id).html(),
-       		link: 'http://balikcina.com/' //+ $("#hiddenlink" + quote_id).html()
-       		// picture: 'https://fbcdn-photos-c-a.akamaihd.net/hphotos-ak-ash3/t39.2081-0/p128x128/851570_705320809513687_1756846560_n.png'
+       		link: 'http://balikcina.com/', //+ $("#hiddenlink" + quote_id).html()
+       		picture: 'https://fbcdn-photos-c-a.akamaihd.net/hphotos-ak-ash3/t39.2081-0/p128x128/851570_705320809513687_1756846560_n.png',
       		},
       		function(response) {
 
@@ -222,3 +224,10 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/tags.json', function(tagsda
 
  });
 
+function replaceAll(find, replace, str) {
+  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+}
+
+function escapeRegExp(string) {
+    return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
