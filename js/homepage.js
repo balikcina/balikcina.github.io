@@ -135,10 +135,10 @@ function loop(quotesdata, quote_id)
  	    FB.ui({
       		method: 'feed',
        		name: 'Balik Cina - Discover the best Malaysia has to offer',
-       		caption: 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html(),
+       		// caption: 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html(),
        		description: $("#quote" + quote_id).html(),
        		link: 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html(),
-       		picture: 'https://fbcdn-photos-c-a.akamaihd.net/hphotos-ak-ash3/t39.2081-0/p128x128/851570_705320809513687_1756846560_n.png'
+       		// picture: 'https://fbcdn-photos-c-a.akamaihd.net/hphotos-ak-ash3/t39.2081-0/p128x128/851570_705320809513687_1756846560_n.png'
       		});      		
  		}); // close fbfeedbox
 
