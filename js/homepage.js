@@ -141,7 +141,7 @@ function loop(quotesdata, quote_id)
        		// caption: 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html(),
        		// description: $("#quote" + quote_id).html(),
        		link: 'http://balikcina.com/', //+ $("#hiddenlink" + quote_id).html()
-       		picture: 'http://balikcina.com/img/balikcina.jpg',
+       		picture: 'balikcina.com/img/balikcina.jpg',
       		},
       		function(response) {
 
