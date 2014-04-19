@@ -132,15 +132,16 @@ function loop(quotesdata, quote_id)
 		});
 
 		$("#fbfeed" + quote_id).click(function(){
-		quotecontents = replaceAll('\'', '\\\'', $("#quote" + quote_id).html()); 
-					
+		fbquotecontents = $("#quote" + quote_id).html(); 
+		fbquotelink = 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html();
+
  	    FB.ui(
  	    	{
       		method: 'feed',
-       		name: $("#player_name" + quote_id).html(),
-       		caption: 'Discover the best Malaysia has to offer',
+       		name: 'Balik Cina | Beautiful Quotes by Malaysian Politicians',
+       		caption: $("#player_name" + quote_id).html() + ' said:',
        		description: (quotecontents),
-       		link: 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html(),
+       		link: fbquotelink,
        		picture: 'balikcina.com/img/balikcina.jpg',
       		},
       		function(response) {
