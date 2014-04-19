@@ -144,18 +144,24 @@ function getQuotes(quotesdata, quote_id){
 
 		// Generate and Toggle FB Comment Box
  		$("#showcomments" + quote_id).css( 'cursor', 'pointer' );
- 		$("#showcomments" + quote_id).one("click", function() {	
+ 		var clicks = 0;
+ 		$("#showcomments" + quote_id).click(function() {
+ 		if(clicks == 0){	
 			$("#box" + quote_id).append(function(){
       			width = $("#box" + quote_id).width()*0.95;				  
-				return "<br><div id='commentbox" + quote_id + "' class='fb-comments' data-href='http://balikcina.com/" + $("#hiddenlink" + quote_id).html() + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
+				return "<div id='commentbox" + quote_id + "' class='fb-comments' data-href='http://balikcina.com/" + $("#hiddenlink" + quote_id).html() + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
 			});
-			FB.XFBML.parse();
 			$('#commentbox' + quote_id).css('display','none');
+			FB.XFBML.parse($('#box' + quote_id)[0], function() {
+   				$('#commentbox' + quote_id).show("slow");
+			});			
+		}
+		else{
+			$("#commentbox" + quote_id).toggle("slow");			
+		}
+		++clicks;
 		});
 
-		$("#showcomments" + quote_id).click(function() {	
-			$("#commentbox" + quote_id).toggle();
-		});
 
 		$("#box" + quote_id).mouseover(function(){
    			$(this).addClass('hoverquote');

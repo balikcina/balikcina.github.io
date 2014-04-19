@@ -57,18 +57,28 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 
 		// Commment Box
  		$("#showcomments").css( 'cursor', 'pointer' );
- 		$("#showcomments").one("click", function() {
- 			
+
+ 		var clicks = 0;
+ 		$("#showcomments").click(function() {
+
+ 		if(clicks == 0){
 			$("#commentshehe").append(function(){
       			width = $("#commentshehe").width();				  
-				return "<br><div id='commentbox" + quote_id + "' class='fb-comments' data-href='" + $(location).attr('href') + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
+				return "<div id='commentbox" + quote_id + "' class='fb-comments' data-href='" + $(location).attr('href') + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
 			});
-			FB.XFBML.parse();
-			$('#commentbox').css('display','none');
-		});
 
-		$("#showcomments").click(function() {	
-			$("#commentbox").toggle();
+			$('#commentbox'+ quote_id).css('display','none');
+
+			FB.XFBML.parse($("#commentshehe")[0], function() {
+   				$('#commentbox' + quote_id).show("slow");
+			});				
+		}
+
+		else{
+			$("#commentbox" + quote_id).toggle("slow");			
+		}
+
+		++clicks;			
 		});
 
 
