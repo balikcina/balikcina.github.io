@@ -145,7 +145,7 @@ html, body {
 .fill {
 	width:100%;
 	height:100%;
-/* IE10 Consumer Preview */ 
+/* IE10 Consumer Previeew */ 
 background-image: -ms-linear-gradient(bottom, #D0D0D0 0%, #FFFFFF 10%, #FFFFFF 100%);
 
 /* Mozilla Firefox */ 
@@ -362,5 +362,8 @@ img.center {
     margin-left: auto;
     margin-right: auto;
 }
+<<<<<<< HEAD
 /*
 why no sync*/
+=======
+>>>>>>> 833ded956425e06e259dc0d3d1a5735387cd2cca
