@@ -138,9 +138,9 @@ function loop(quotesdata, quote_id)
  	    	{
       		method: 'feed',
        		name: $("#player_name" + quote_id).html(),
-       		// caption: 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html(),
-       		// description: $("#quote" + quote_id).html(),
-       		link: 'http://balikcina.com/', //+ $("#hiddenlink" + quote_id).html()
+       		caption: 'Discover the best Malaysia has to offer',
+       		description: (quotecontents),
+       		link: 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html(),
        		picture: 'balikcina.com/img/balikcina.jpg',
       		},
       		function(response) {
