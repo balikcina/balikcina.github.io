@@ -142,7 +142,7 @@ function loop(quotesdata, quote_id)
        		caption: $("#player_name" + quote_id).html(),
        		description: (fbquotecontents),
        		link: fbquotelink,
-       		picture: 'balikcina.com/img/balikcina.jpg',
+       		picture: 'http://balikcina.com/img/balikcina.jpg',
        		redirect_uri: 'balikcina.com'
       		},
       		function(response) {
