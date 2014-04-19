@@ -64,8 +64,8 @@ function getQuotes(quotesdata, quote_id){
 
  					"<div class='well well-lg'><h4>" + quotecontents + "</h4></div>" +
  					"<div class='btn-group pull-right'>" +				
-					"<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
- 					"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" + 					
+					//"<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
+ 					//"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" + 					
  					"<a class='btn btn-default vermiddle' href='" + playerlink + "'role='button'>" + "<i class='fa fa-heart fa-lg'>&nbsp; </i>"  + quotesdata[quote_id]['player_name'] + "</a>" +
  					"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
 					"<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +

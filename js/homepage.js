@@ -20,7 +20,6 @@ function loop(quotesdata, quote_id)
 		viewcount = quotesdata[quote_id]["view_count"];
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
 		playerlink = 'players.html?name=' + player_name;
-		//facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
 		viewcount = "Views: " + viewcount;
 		encodedquote = replaceAll('\'', '%27', quotecontents);
 		encodedquote = encodeURIComponent(encodedquote);

@@ -17,13 +17,18 @@ jQuery.expr[":"].Contains = jQuery.expr.createPseudo(function(arg) {
 $( document ).ready(function() {
 $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote_id'] + ".json", function( data ) {
 		quotedescription = data['source'];
-		quotetitle = data['quote'];
+		quotecontents = data['quote'];
 		quotedate = data["source_date"];
 		quoteurl = data['source_url'];
 		quote_id = data['id'];
 		viewcount = data["view_count"];
 		quotelink = 'quotes.html?quote_id=' + data['id'];
 		quotecontext = data["context"];
+		encodedquote = replaceAll('\'', '%27', quotecontents);
+		encodedquote = encodeURIComponent(encodedquote);
+		encodedurl = window.location.href;
+		encodedurl = encodeURIComponent(encodedurl);
+		twitterlink = 'https://twitter.com/share?text=' + encodedquote + ' ' + '&url=' + encodedurl;
 
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
 			thecontext = "<em style='font-size: 16px;'>On " + quotecontext + ": </em><p>";
@@ -34,12 +39,12 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		}
 		
 
-		$(document).attr('title', 'Balik Cina - ' + quotetitle);
+		$(document).attr('title', 'Balik Cina - ' + quotecontents);
 		$('meta[name=og\\:title]').attr('content', 'Balik Cina!');
-		$('meta[name=og\\:description]').attr('content', quotetitle);
+		$('meta[name=og\\:description]').attr('content', quotecontents);
 
 		$("#popquote").html(function(){
-			return quotetitle;
+			return quotecontents;
 		});
 
 		$("#contextquote").html(function(){
@@ -92,14 +97,14 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
  		$("#quotebuttons").append(function(){ 				
  			return 	"<div class='btn-toolbar' role='toolbar'>"+
 
- 					// "<div class='btn-group pull-left smallurl'>" +
+ 					"<div class='btn-group pull-left'>" +
+ 					"<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button' data-toggle='tooltip' data-placement='bottom' title='View Count'>" + "<i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></a>" + 	
  					// "<div class='well well-sm' style:'width:10px;'>" + window.location.href + "</div>"
- 					// "</div>" +
+ 					"</div>" +
 
  					"<div class='btn-group pull-right'>" +				
-					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
- 				// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
- 					"<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button' data-toggle='tooltip' data-placement='bottom' title='View Count'>" + "<i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></a>" + 					
+ 					"<a class='btn btn-default vermiddle' href='" + twitterlink + "' target='_blank'><i class='fa fa-twitter fa-lg'></i>&nbsp;</a>" +
+ 					"<a class='btn btn-default vermiddle' id='fbfeed" + quote_id + "'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +	
  					"<a class='btn btn-default vermiddle' href='" + playerlink + "'role='button'>" + "<i class='fa fa-heart fa-lg'>&nbsp; </i>"  + player_name + "</a>" +
  					"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button' data-toggle='tooltip' data-placement='bottom' title='Link to Article'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
 					// "<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +
@@ -108,10 +113,38 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 					"<div class='clearfix'></div><br>" +
 
 					"</div>";
- 		});		
+ 		});
+
+		$("#fbfeed" + quote_id).click(function(){
+		fbquotecontents = quotecontents;
+		fbquotelink = window.location.href;
+
+ 	    FB.ui(
+ 	    	{
+      		method: 'feed',
+       		name: 'Balik Cina | Beautiful Quotes by Malaysian Politicians',
+       		caption: player_name,
+       		description: (fbquotecontents),
+       		link: fbquotelink,
+       		picture: 'http://balikcina.com/img/balikcina.jpg',
+       		redirect_uri: 'balikcina.com'
+      		},
+      		function(response) {
+
+      		}
+      	);      		
+ 		}); // close fbfeedbox		
 
 	});
 
 });
 
 });
+
+function replaceAll(find, replace, str) {
+  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+}
+
+function escapeRegExp(string) {
+    return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}

@@ -29,9 +29,12 @@ function loop(quotesdata, quote_id)
 		playerlink = 'players.html?name=' + player_name;
 		facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
 		viewcount = "Views: " + viewcount;
-		encodedquote = encodeURIComponent(quotecontents);
-		encodedurl = encodeURIComponent(quotelink);
-		twitterlink = 'https://twitter.com/share?text=' + encodedquote + '&url=' + encodedurl;
+
+		encodedquote = replaceAll('\'', '%27', quotecontents);
+		encodedquote = encodeURIComponent(encodedquote);
+		encodedurl = 'http://www.balikcina.com/' + quotelink;
+		encodedurl = encodeURIComponent(encodedurl);
+		twitterlink = 'https://twitter.com/share?text=' + encodedquote + ' ' + '&url=' + encodedurl;
 
 		// Empty space if no context
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
@@ -56,7 +59,7 @@ function loop(quotesdata, quote_id)
  					"<div class='col-xs-10' id='box" + quote_id + "'>" +
  					"<div class='topbar'>"+
  					"<left>" +
- 					"<h1>" + player_name + "&nbsp; </h1>" + 					
+ 					"<h1>" + "<span id='player_name" + quote_id + "'>" + player_name + "</span>&nbsp;</h1>" + 					
  					"</left>" +
 
  					"<right>" +
@@ -70,9 +73,9 @@ function loop(quotesdata, quote_id)
  					"</div>" + // Close midbar
  					"<div style='clear: both;'></div>" +
 
- 					"<div class='quotebar' id='quote" + quote_id + "'>" +
- 					"<h2>" + quotecontents + "</h2>" +
- 					"</div>" + // Close quote bar
+ 					"<h2><div class='quotebar' id='quote" + quote_id + "'>" +
+ 					quotecontents +
+ 					"</div></h2>" + // Close quote bar
 
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
@@ -81,7 +84,7 @@ function loop(quotesdata, quote_id)
  					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
 
  					"<a class='alignright' href='" + twitterlink + "' target='_blank'><i class='fa fa-twitter fa-lg'></i>&nbsp;</a>" +
- 					"<a class='alignright' href='" + facebooklink + "' target='_blank'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +
+					"<a class='alignright' id='fbfeed" + quote_id + "'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
  					"</h3></div>" + // Close bottom bar
@@ -137,6 +140,27 @@ function loop(quotesdata, quote_id)
 		$("#box" + quote_id).mouseout(function(){
    			$(this).removeClass('hoverquote');
 		});
+
+		$("#fbfeed" + quote_id).click(function(){
+		fbquotecontents = $("#quote" + quote_id).html(); 
+		fbquotelink = 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html();
+
+ 	    FB.ui(
+ 	    	{
+      		method: 'feed',
+       		name: 'Balik Cina | Beautiful Quotes by Malaysian Politicians',
+       		caption: $("#player_name" + quote_id).html(),
+       		description: (fbquotecontents),
+       		link: fbquotelink,
+       		picture: 'http://balikcina.com/img/balikcina.jpg',
+       		redirect_uri: 'balikcina.com'
+      		},
+      		function(response) {
+
+      		}
+      	);      		
+ 		}); // close fbfeedbox
+
 	});
 }
 
@@ -160,4 +184,12 @@ function range(start, end) {
         foo.push(i);
     }
     return foo;
+}
+
+function replaceAll(find, replace, str) {
+  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+}
+
+function escapeRegExp(string) {
+    return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 }

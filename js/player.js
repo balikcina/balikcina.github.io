@@ -51,14 +51,12 @@ function getQuotes(quotesdata, quote_id){
 		quotecontext = quotesdata[quote_id]["context"];
 		viewcount = quotesdata[quote_id]["view_count"];
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
-
-		//playerlink = 'players.html?name=' + player_name;
-
-		facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
-		viewcount = "Views: " + viewcount;
-		encodedquote = encodeURIComponent(quotecontents);
-		encodedurl = encodeURIComponent(quotelink);
-		twitterlink = 'https://twitter.com/share?text=' + encodedquote + '&url=' + encodedurl;
+		viewcount = "Views: " + viewcount;			
+		encodedquote = replaceAll('\'', '%27', quotecontents);
+		encodedquote = encodeURIComponent(encodedquote);
+		encodedurl = 'http://www.balikcina.com/' + quotelink;
+		encodedurl = encodeURIComponent(encodedurl);
+		twitterlink = 'https://twitter.com/share?text=' + encodedquote + ' ' + '&url=' + encodedurl;
 
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
 			thecontext = "<em style='font-size: 16px;'>On " + quotecontext + ": </em>";
@@ -83,7 +81,7 @@ function getQuotes(quotesdata, quote_id){
  					
  					"<div class='topbar'>"+
  					"<left>" +
- 					"<h1>" + player_name + "&nbsp; </h1>" + 					
+ 					"<h1>" + "<span id='player_name" + quote_id + "'>" + player_name + "</span>&nbsp;</h1>" + 					
  					"</left>" +
 
  					"<right>" +
@@ -97,9 +95,9 @@ function getQuotes(quotesdata, quote_id){
  					"</div>" + // Close midbar
  					"<div style='clear: both;'></div>" +
 
- 					"<div class='quotebar' id='quote" + quote_id + "'>" +
- 					"<h2>" + quotecontents + "</h2>" +
- 					"</div>" + // Close quote bar
+ 					"<h2><div class='quotebar' id='quote" + quote_id + "'>" +
+ 					quotecontents +
+ 					"</div></h2>" + // Close quote bar
 
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
@@ -108,7 +106,7 @@ function getQuotes(quotesdata, quote_id){
  					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
 
  					"<a class='alignright' href='" + twitterlink + "' target='_blank'><i class='fa fa-twitter fa-lg'></i>&nbsp;</a>" +
- 					"<a class='alignright' href='" + facebooklink + "' target='_blank'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +
+ 					"<a class='alignright' id='fbfeed" + quote_id + "'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
  					"</h3></div>" + // Close bottom bar
@@ -165,8 +163,28 @@ function getQuotes(quotesdata, quote_id){
         
 		$("#box" + quote_id).mouseout(function(){
    			$(this).removeClass('hoverquote');
-		}); 				
-}
+		});
+
+		$("#fbfeed" + quote_id).click(function(){
+		fbquotecontents = $("#quote" + quote_id).html(); 
+		fbquotelink = 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html();
+
+ 	    FB.ui(
+ 	    	{
+      		method: 'feed',
+       		name: 'Balik Cina | Beautiful Quotes by Malaysian Politicians',
+       		caption: $("#player_name" + quote_id).html(),
+       		description: (fbquotecontents),
+       		link: fbquotelink,
+       		picture: 'http://balikcina.com/img/balikcina.jpg',
+       		redirect_uri: 'balikcina.com'
+      		},
+      		function(response) {
+
+      		}
+      	);      		
+ 		}); // close fbfeedbox
+	}
 
 $( document ).ready(function() {
 $.getJSON("http://vast-scrubland-9059.herokuapp.com/get_quotes.json?name=" + params()['name'], function( quotesdata ) {	
