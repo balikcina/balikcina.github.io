@@ -65,12 +65,14 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
 		viewcount = searchdata['quotes'][quote_id]["view_count"];
 		quotelink = 'quotes.html?quote_id=' + searchdata['quotes'][quote_id]['id'];
 		playerlink = 'players.html?name=' + searchdata['quotes'][quote_id]['player_name'];
-
-		facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
+		//facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
 		viewcount = "Views: " + viewcount;
-		encodedquote = encodeURIComponent(quotecontents);
-		encodedurl = encodeURIComponent(quotelink);
-		twitterlink = 'https://twitter.com/share?text=' + encodedquote + '&url=' + encodedurl;
+
+		encodedquote = replaceAll('\'', '%27', quotecontents);
+		encodedquote = encodeURIComponent(encodedquote);
+		encodedurl = 'http://www.balikcina.com/' + quotelink;
+		encodedurl = encodeURIComponent(encodedurl);
+		twitterlink = 'https://twitter.com/share?text=' + encodedquote + ' ' + '&url=' + encodedurl;
 
 		// Empty space if no context
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
@@ -120,7 +122,7 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
  					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
 
  					"<a class='alignright' href='" + twitterlink + "' target='_blank'><i class='fa fa-twitter fa-lg'></i>&nbsp;</a>" +
- 					"<a class='alignright' href='" + facebooklink + "' target='_blank'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +
+ 					"<a class='alignright' id='fbfeed" + quote_id + "'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
  					"</h3></div>" + // Close bottom bar
@@ -143,6 +145,26 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
 
  		});
 
+		$("#fbfeed" + quote_id).click(function(){
+		fbquotecontents = $("#quote" + quote_id).html(); 
+		fbquotelink = 'http://balikcina.com/' + $("#hiddenlink" + quote_id).html();
+
+ 	    FB.ui(
+ 	    	{
+      		method: 'feed',
+       		name: 'Balik Cina | Beautiful Quotes by Malaysian Politicians',
+       		caption: $("#player_name" + quote_id).html(),
+       		description: (fbquotecontents),
+       		link: fbquotelink,
+       		picture: 'http://balikcina.com/img/balikcina.jpg',
+       		redirect_uri: 'balikcina.com'
+      		},
+      		function(response) {
+
+      		}
+      	);      		
+ 		}); // close fbfeedbox
+ 		
  		$("#player-quotes").fadeIn('slow');
 
 		// Hide quote link, any better way to do this?
