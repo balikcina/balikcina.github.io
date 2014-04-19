@@ -20,7 +20,7 @@ function loop(quotesdata, quote_id)
 		viewcount = quotesdata[quote_id]["view_count"];
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
 		playerlink = 'players.html?name=' + player_name;
-		facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
+		//facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
 		viewcount = "Views: " + viewcount;
 		encodedquote = encodeURIComponent(quotecontents);
 		encodedurl = encodeURIComponent(quotelink);
@@ -76,7 +76,7 @@ function loop(quotesdata, quote_id)
  					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
 
  					"<a class='alignright' href='" + twitterlink + "' target='_blank'><i class='fa fa-twitter fa-lg'></i>&nbsp;</a>" +
- 					"<a class='alignright' href='" + facebooklink + "' target='_blank'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +
+ 					"<a class='alignright' id='fbfeed" + quote_id + "'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
  					"</h3></div>" + // Close bottom bar
@@ -131,6 +131,25 @@ function loop(quotesdata, quote_id)
    			$(this).removeClass('hoverquote');
 		});
 
+		$("#fbfeed" + quote_id).click(function(){   			
+ 	    FB.ui({
+      		method: 'feed',
+       		name: 'Balik Cina - Discover the best Malaysia has to offer',
+       		caption: 'http://balikcina.com/' + quotelink,
+       		description: (
+          		quotecontents
+       		),
+       		link: 'http://balikcina.com/' + quotelink,
+       		picture: 'https://fbcdn-photos-c-a.akamaihd.net/hphotos-ak-ash3/t39.2081-0/p128x128/851570_705320809513687_1756846560_n.png'
+      		},
+      		// function(response) {
+        // 		if (response && response.post_id) {
+        //   		alert('Post was published.');
+        // 		} else {
+        //   		alert('Post was not published.');
+        // 	}
+      	}); // close fb ui
+ 		}); // close fbfeedbox
 
  		// $("#whosaid" + quote_id).click(function(){
  		// 	$("leftbutton" + quote_id).html(function(){
