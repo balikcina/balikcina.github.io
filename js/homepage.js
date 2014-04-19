@@ -143,6 +143,7 @@ function loop(quotesdata, quote_id)
        		description: (fbquotecontents),
        		link: fbquotelink,
        		picture: 'balikcina.com/img/balikcina.jpg',
+       		redirect_uri: 'balikcina.com'
       		},
       		function(response) {
 
