@@ -180,11 +180,12 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json', function(quot
 		return '';
 	});
 
-    for (var i=1; i<=10; i++){
-    	var quote_id = foo.splice(Math.floor(Math.random() * quotesdata.length-1-i), 1)[0];   	
+    for (var i=1; i<=15; i++){
+    	var quote_id = foo.splice(Math.floor(Math.random() * quotesdata.length-1-i), 1)[0];    	   	
         loop(quotesdata, quote_id)
     };
 });
+
 
 function range(start, end) {
     var foo = [];
