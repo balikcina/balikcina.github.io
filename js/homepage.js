@@ -22,9 +22,11 @@ function loop(quotesdata, quote_id)
 		playerlink = 'players.html?name=' + player_name;
 		//facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
 		viewcount = "Views: " + viewcount;
-		encodedquote = encodeURIComponent(quotecontents);
-		encodedurl = encodeURIComponent(quotelink);
-		twitterlink = 'https://twitter.com/share?text=' + encodedquote + '&url=' + encodedurl;
+		encodedquote = replaceAll('\'', '&#39;', quotecontents);
+		encodedquote = encodeURIComponent(encodedquote);
+		encodedurl = 'http://www.balikcina.com/' + quotelink;
+		encodedurl = encodeURIComponent(encodedurl);
+		twitterlink = 'https://twitter.com/share?text=' + encodedquote + ' ' + '&url=' + encodedurl;
 
 		// Empty space if no context
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
