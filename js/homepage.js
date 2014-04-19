@@ -141,7 +141,7 @@ function loop(quotesdata, quote_id)
        		),
        		link: 'http://balikcina.com/' + quotelink,
        		picture: 'https://fbcdn-photos-c-a.akamaihd.net/hphotos-ak-ash3/t39.2081-0/p128x128/851570_705320809513687_1756846560_n.png'
-      		},
+      		}
       		// function(response) {
         // 		if (response && response.post_id) {
         //   		alert('Post was published.');
