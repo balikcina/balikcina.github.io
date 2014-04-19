@@ -322,3 +322,43 @@ blue {
    padding-right: 0 !important;
    margin-right: 0 !important;
 }
+
+.quotepage {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	border-bottom-style: solid;
+	border-width: 1px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.quotepage h1 {
+	font-size: 200%;
+	font-weight: 900;
+	display:inline;
+}
+
+.quotepage h2 {
+	font-size: 250%;
+	font-weight: 500;
+	display:inline;
+}
+
+.quotepage h3 {
+	font-size: 100%;
+	font-weight: normal;
+	display:inline;
+}
+
+.quotepage right {
+	float: right;
+}
+
+.quotepage left {
+	float: left;
+}
+
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

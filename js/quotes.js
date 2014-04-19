@@ -22,6 +22,7 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		quoteurl = data['source_url'];
 		quote_id = data['id'];
 		viewcount = data["view_count"];
+		viewcount = "Views: " + viewcount;
 		quotelink = 'quotes.html?quote_id=' + data['id'];
 		quotecontext = data["context"];
 		encodedquote = replaceAll('\'', '%27', quotecontents);
@@ -42,18 +43,6 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		$(document).attr('title', 'Balik Cina - ' + quotecontents);
 		$('meta[name=og\\:title]').attr('content', 'Balik Cina!');
 		$('meta[name=og\\:description]').attr('content', quotecontents);
-
-		$("#popquote").html(function(){
-			return quotecontents;
-		});
-
-		$("#contextquote").html(function(){
-			return thecontext;
-		});
-
-		$("#quotedescription").html(function(){
-			return "<p>" + quotedescription + "</p>";
-		});	
 
 		// Commment Box
  		$("#showcomments").css( 'cursor', 'pointer' );
@@ -81,6 +70,9 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		++clicks;			
 		});
 
+		$("#quotedescription").html(function(){
+			return "<p>" + quotedescription + "</p>";
+		});	
 
 		if(data['tags'].length == 0){
 			$("#taglist").append(function(){
@@ -100,30 +92,73 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		playerlink = 'players.html?name=' + player_name;
 		playeravatar = nplayerdata["avatar_url"]
 
-		$("#authorquote").html(function(){
-			return "<img class='img-thumbnail smallimg' src='" + playeravatar + "'>" + player_name;
+		$("#top-quotes").html(function(){
+			return '';
 		});
-		
- 		$("#quotebuttons").append(function(){ 				
- 			return 	"<div class='btn-toolbar' role='toolbar'>"+
 
- 					"<div class='btn-group pull-left'>" +
- 					"<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button' data-toggle='tooltip' data-placement='bottom' title='View Count'>" + "<i class='fa fa-eye'>&nbsp; </i>" + viewcount + "</i></a>" + 	
- 					// "<div class='well well-sm' style:'width:10px;'>" + window.location.href + "</div>"
- 					"</div>" +
+ 		$("#top-quotes").append(function(){
+ 				
+ 			return 	"<div class='quotepage'>" +
+ 					"<div class='row'>" +
 
- 					"<div class='btn-group pull-right'>" +				
- 					"<a class='btn btn-default vermiddle' href='" + twitterlink + "' target='_blank'><i class='fa fa-twitter fa-lg'></i>&nbsp;</a>" +
- 					"<a class='btn btn-default vermiddle' id='fbfeed" + quote_id + "'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +	
- 					"<a class='btn btn-default vermiddle' href='" + playerlink + "'role='button'>" + "<i class='fa fa-heart fa-lg'>&nbsp; </i>"  + player_name + "</a>" +
- 					"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button' data-toggle='tooltip' data-placement='bottom' title='Link to Article'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
-					// "<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +
-					"</div>"+
+ 					// Quotes sub-box
+ 					"<div class='col-xs-12' id='box" + quote_id + "'>" +
+ 					"<a href='" + playerlink + "'>" + "<img class='img-thumbnail center' width='20%' src='" + playeravatar + "'></a>" +
 
-					"<div class='clearfix'></div><br>" +
+ 					"<div class='topbar text-center'>" +
+ 					"<h1>" + "<span id='player_name" + quote_id + "'>" + player_name + "</span>&nbsp;</h1>" + 					
+	
+ 					"<div style='clear: both;'></div>" +
+ 					"</div>" +  // Close topbar
 
-					"</div>";
+ 					"<div class='midbar text-center'>"+
+ 					thecontext +
+ 					"</div>" + // Close midbar
+ 					"<div style='clear: both;'></div>" +
+
+ 					"<h2><div class='quotebar text-center' id='quote" + quote_id + "'>" +
+ 					quotecontents +
+ 					"</div></h2>" + // Close quote bar
+
+ 					"<div class='bottombar'><h3>" +
+ 					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
+ 					//"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i></a> &nbsp;" +
+ 					"<a href='" + quotelink + "'><i class='fa fa-ellipsis-h fa-lg'>&nbsp;</i>Details</a> &nbsp;" +
+ 					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
+
+ 					"<a class='alignright' href='" + twitterlink + "' target='_blank'><i class='fa fa-twitter fa-lg'></i>&nbsp;</a>" +
+ 					"<a class='alignright' id='fbfeed" + quote_id + "'><i class='fa fa-facebook-square fa-lg'></i>&nbsp;</a>" +
+ 					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
+ 					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
+ 					"</h3></div>" + // Close bottom bar
+ 					"<left><p><h3>" + viewcount + "</h3></p></left>" +
+ 					"<div class='clearfix'></div>" +
+
+ 				// 	"<div class='btn-group-sm pull-right'>" +
+ 				// 	"<a class='btn btn-default vermiddle' id='whosaid" + quote_id + "'" + " href='" + playerlink + "'role='button'>" + player_name + "</a>" +					
+ 				// 	"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button' target='_blank'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
+					// // "<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +
+					//"<hr>" + 
+					"</div>" + //close quote sub-box
+
+					"<div id='hiddenlink" + quote_id + "'>" + quotelink + "</div>" + 
+
+					"</div></div>" + // Close quote box, rows
+					"<div class='clearfix'></div>";	
+
  		});
+
+		// Hide quote link, any better way to do this?
+		$('#hiddenlink' + quote_id).css('display','none');
+
+		// Ugly animation hehe
+ 		$("#top-quotes").fadeIn('slow');
+
+ 		// Link to Quotes
+ 		$("#quote" + quote_id).css( 'cursor', 'pointer' );
+ 		$("#quote" + quote_id).click(function() {
+			window.open($("#hiddenlink" + quote_id).html(), '_self');
+		});
 
 		$("#fbfeed" + quote_id).click(function(){
 		fbquotecontents = quotecontents;
