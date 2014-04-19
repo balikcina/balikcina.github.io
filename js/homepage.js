@@ -22,7 +22,7 @@ function loop(quotesdata, quote_id)
 		playerlink = 'players.html?name=' + player_name;
 		//facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
 		viewcount = "Views: " + viewcount;
-		encodedquote = replaceAll('\'', '&#39;', quotecontents);
+		encodedquote = replaceAll('\'', '%27', quotecontents);
 		encodedquote = encodeURIComponent(encodedquote);
 		encodedurl = 'http://www.balikcina.com/' + quotelink;
 		encodedurl = encodeURIComponent(encodedurl);
