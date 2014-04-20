@@ -154,12 +154,6 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		// Ugly animation hehe
  		$("#top-quotes").fadeIn('slow');
 
- 		// Link to Quotes
- 		$("#quote" + quote_id).css( 'cursor', 'pointer' );
- 		$("#quote" + quote_id).click(function() {
-			window.open($("#hiddenlink" + quote_id).html(), '_self');
-		});
-
 		$("#fbfeed" + quote_id).click(function(){
 		fbquotecontents = quotecontents;
 		fbquotelink = window.location.href;
