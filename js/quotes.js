@@ -18,7 +18,7 @@ $( document ).ready(function() {
 $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote_id'] + ".json", function( data ) {
 		quotedescription = data['source'];
 		quotecontents = data['quote'];
-		quotedate = data["source_date"];
+		quotedate = 'Source: ' + data["source_date"];
 		quoteurl = data['source_url'];
 		quote_id = data['id'];
 		viewcount = data["view_count"];
