@@ -81,14 +81,18 @@
                     </div>
                     
                         <label class="control-label" for="fQuote">Quote</label>
-                        <input type="text" class="form-control" name="fQuote" placeholder="Ideally, 20 words or less."></div>
+                        <input type="text" maxlength="160" class="form-control" name="fQuote" placeholder="160 characters or less."></div>
+
+                        <label class="control-label" for="fTags">Tags</label>
+                        <input type="text" maxlength="160" class="form-control" name="fTags" placeholder="Any related tags? Separate with commas.">
 
                     <div class="form-group">
                         <label class="control-label" for="fDescription">Description</label>
-                        <textarea class="form-control" name="fDescription" rows="3" placeholder="Provide some context or a short description for the quote."></textarea>
+                        <textarea class="form-control" name="fDescription" rows="3" placeholder="Provide some context or a short description for the quote. Or paste the newspaper article here"></textarea>
                     </div>
 
-
+                    <label class="control-label" for="fDate">Date of your source</label>
+                    <input type="date" class="form-control" name="fDate">
 
                     <div class="form-group">
                         <label class="control-label" for="fSource">Source</label>

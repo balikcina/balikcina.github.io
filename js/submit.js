@@ -28,8 +28,8 @@ $("#submitbutton").click(function(){
      data["quote"]["player_id"] = datasaya['fAuthor']
      data["quote"]["source"] = datasaya['fDescription']
      data["quote"]["source_url"] = datasaya['fSource']
-     data["quote"]["source_date"] = "15-12-1992"
-     data["quote"]["tag_list"] = "tag1,tag2"
+     data["quote"]["source_date"] = datasaya['fDate']
+     data["quote"]["tag_list"] = datasaya['fTags']
      data["quote"]["context"] = "on context"
     
      var jqxhr = $.ajax({type:"POST", 
