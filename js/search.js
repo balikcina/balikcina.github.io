@@ -16,6 +16,10 @@ $("#searchname").html(function(){
 	return search_name;
 });	
 
+$("#loadingspin").html(function(){
+	return "<i class='fa fa-spinner fa-2x fa-spin'></i>";
+});
+
 $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()['key'], function( searchdata ) {
 	if(searchdata['players'].length == 0){
 
@@ -29,6 +33,10 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
 		return "<br><div class='text-center'><p> No quotes related to the search term :(</p></div><br>";
 	});	
 	}
+
+	$("#loadingspin").html(function(){
+		return "";
+	});
 
 	for (var i=0; i < searchdata['players'].length; i++){
 		playeravatar = searchdata['players'][i]['avatar_url'];

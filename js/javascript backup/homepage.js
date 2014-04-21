@@ -180,7 +180,7 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json', function(quot
 		return '';
 	});
 
-    for (var i=1; i<=15; i++){
+    for (var i=1; i<=10; i++){
     	var quote_id = foo.splice(Math.floor(Math.random() * quotesdata.length-1-i), 1)[0];    	   	
         loop(quotesdata, quote_id)
     };
@@ -195,45 +195,31 @@ function range(start, end) {
     return foo;
 }
 
-// $.getJSON('https://vast-scrubland-9059.herokuapp.com/players.json', function(playersdata) {
 
-// 	for (var i=0; i<playersdata.length; i++){
+// // Get tags
+// $.getJSON('https://vast-scrubland-9059.herokuapp.com/tags.json', function(tagsdata) {
+// 	for (var i=0; i<tagsdata["player_tags"].length; i++){
 
-// 		var player_name = playersdata[i]["name"];
-// 		var player_url = 'players.html?name=' + player_name
-// 		var player_name = player_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+// 		var tag_name = tagsdata["player_tags"][i]["name"];
+// 		var tag_url = 'tags.html?tag=' + tagsdata["player_tags"][i]["name"]
 
-//  		$("#list-names").append(function(){
-//  			return "<p> <a href='" + player_url + "'>" + player_name + "</a> </p>";
+//  		$("#list-tags").append(function(){
+//  			return "<a href='" + tag_url + "'>" + tag_name + " </a>";
 //  		});
-
 //  	}
+
+// 	for (var i=0; i<tagsdata["quote_tags"].length; i++){
+
+// 		var tag_name = tagsdata["quote_tags"][i]["name"];
+// 		var tag_url = 'tags.html?tag=' + tagsdata["quote_tags"][i]["name"]
+
+//  		$("#list-tags").append(function(){
+//  			return "<a href='" + tag_url + "'>" + tag_name + " </a>";
+//  		});
+//  	}
+
+
 //  });
-
-// Get tags
-$.getJSON('https://vast-scrubland-9059.herokuapp.com/tags.json', function(tagsdata) {
-	for (var i=0; i<tagsdata["player_tags"].length; i++){
-
-		var tag_name = tagsdata["player_tags"][i]["name"];
-		var tag_url = 'tags.html?tag=' + tagsdata["player_tags"][i]["name"]
-
- 		$("#list-tags").append(function(){
- 			return "<a href='" + tag_url + "'>" + tag_name + " </a>";
- 		});
- 	}
-
-	for (var i=0; i<tagsdata["quote_tags"].length; i++){
-
-		var tag_name = tagsdata["quote_tags"][i]["name"];
-		var tag_url = 'tags.html?tag=' + tagsdata["quote_tags"][i]["name"]
-
- 		$("#list-tags").append(function(){
- 			return "<a href='" + tag_url + "'>" + tag_name + " </a>";
- 		});
- 	}
-
-
- });
 
 function replaceAll(find, replace, str) {
   return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
