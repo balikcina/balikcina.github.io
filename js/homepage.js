@@ -169,22 +169,22 @@ function loop(quotesdata, quote_id)
  	}); 
 }
 
-// $.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json', function(quotesdata) {
-// 	$("#quotenum").html(function(){
-// 		return quotesdata.length;
-// 	});
+$.getJSON('quotes.json', function(quotesdata) {
+	$("#quotenum").html(function(){
+		return quotesdata.length;
+	});
 
-// 	var foo = range(0,quotesdata.length);
+	var foo = range(0,quotesdata.length);
 
-// 	$("#top-quotes").html(function(){
-// 		return '';
-// 	});
+	$("#top-quotes").html(function(){
+		return '';
+	});
 
-//     for (var i=1; i<=10; i++){
-//     	var quote_id = foo.splice(Math.floor(Math.random() * quotesdata.length-1-i), 1)[0];    	   	
-//         loop(quotesdata, quote_id)
-//     };
-// });
+    for (var i=1; i<=10; i++){
+    	var quote_id = foo.splice(Math.floor(Math.random() * quotesdata.length-1-i), 1)[0];    	   	
+        loop(quotesdata, quote_id)
+    };
+});
 
 
 function range(start, end) {
