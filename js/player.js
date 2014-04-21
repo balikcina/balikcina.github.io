@@ -9,6 +9,7 @@ params = function() {
 };
 
 function getPlayer(quotesdata){
+	
 	$.getJSON( 'https://vast-scrubland-9059.herokuapp.com/players/' + quotesdata[0]['player_id'] + '.json', function(nplayerdata){
 		player_name = params()['name'];
 		playeravatar = nplayerdata['avatar_url'];
