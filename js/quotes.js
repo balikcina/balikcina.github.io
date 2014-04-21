@@ -70,6 +70,10 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		++clicks;			
 		});
 
+		$("#extlinks").html(function(){
+			return "<p>" + "<a href='" + quoteurl + "' target='_blank'>" + quoteurl + "</a></p>";
+		});	
+
 		$("#quotedescription").html(function(){
 			return "<p>" + quotedescription + "</p>";
 		});	
