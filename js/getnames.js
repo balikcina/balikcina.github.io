@@ -14,12 +14,10 @@ $.getJSON('players.json', function(playersdata) {
  });
 
 function loop(quotesdata, quote_id)
-{	
-    $.getJSON('https://vast-scrubland-9059.herokuapp.com/players/' + quotesdata[quote_id]['player_id'] + '.json', function(nplayerdata){
-		
+{	    	
 		// Much variables, wow.
-		player_name = nplayerdata["name"].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
-		playeravatar = nplayerdata['avatar_url'];
+		player_name = quotesdata[quote_id]["player_name"].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
+		playeravatar = quotesdata[quote_id]['player']['avatar_url'];
 		quoteurl = quotesdata[quote_id]['source_url'];
 		quotecontents = quotesdata[quote_id]["quote"];
 		quotedate = quotesdata[quote_id]["source_date"];
@@ -166,24 +164,21 @@ function loop(quotesdata, quote_id)
       	);      		
  		}); // close fbfeedbox
 
-	});
 }
 
-$.getJSON('quotes.json', function(quotesdata) {	
-	var foo = range(0,quotesdata.length);
-
+$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json', function(quotesdata) {	
 	$("#top-quotes").hide();
 
 	$("#top-quotes").html(function(){
 		return '';
 	});
 
-	var total = quotesdata.length-1;
+	var total = quotesdata.length;
+	var i = 0;
 
-    for (var i=1; i<=10; i++){
-    	var quote_id = foo.splice(Math.floor(Math.random() * total), 1)[0];   	
-        loop(quotesdata, quote_id)
-        --total;
+    while(i<10){
+        loop(quotesdata, i);
+        i++;
     };
 
     // Needs more work
@@ -192,11 +187,12 @@ $.getJSON('quotes.json', function(quotesdata) {
 
     $("#clickmore").click(function() {
 
-    	if (total > 1){
-   			for (var i=1; i<=10; i++){
-    			var quote_id = foo.splice(Math.floor(Math.random() * total), 1)[0];   	
-        		loop(quotesdata, quote_id)
-        		--total;
+    	if (i < total){
+    		counter = 0;
+   			while(counter < 10){ 	
+        		loop(quotesdata, i);
+        		counter++;
+        		i++;
     		};
     	}
 
@@ -209,14 +205,6 @@ $.getJSON('quotes.json', function(quotesdata) {
 	});
 
 });
-
-function range(start, end) {
-    var foo = [];
-    for (var i = start; i < end; i++) {
-        foo.push(i);
-    }
-    return foo;
-}
 
 function replaceAll(find, replace, str) {
   return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
