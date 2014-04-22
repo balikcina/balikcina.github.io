@@ -6,6 +6,11 @@ $('.carousel').carousel({
   pause: "false"
 });
 
+$("#maincommentbox").append(function(){
+      			width = $("#maincommentbox").width();				  
+				return "<div class='fb-comments' data-href='http://balikcina.com/index.html" + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
+});
+
 function loop(quotesdata, quote_id)
 {     
     $.getJSON('https://vast-scrubland-9059.herokuapp.com/players/' + quotesdata[quote_id]['player_id'] + '.json', function(nplayerdata){
@@ -72,7 +77,7 @@ function loop(quotesdata, quote_id)
 
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
- 					"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i></a> &nbsp;" +
+ 					"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i>Comments</a> &nbsp;" +
  					"<a href='" + quotelink + "'><i class='fa fa-ellipsis-h fa-lg'>&nbsp;</i>Details</a> &nbsp;" +
  					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
 
