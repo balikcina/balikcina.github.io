@@ -33,6 +33,8 @@ function loop(quotesdata, quote_id)
 		encodedurl = encodeURIComponent(encodedurl);
 		twitterlink = 'https://twitter.com/share?text=' + encodedquote + ' ' + '&url=' + encodedurl;
 
+		quote_id = quotesdata[quote_id]['id'];
+
 		// Empty space if no context
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
 			thecontext = "<em style='font-size: 12px;'>On " + quotecontext + ": </em>";
@@ -101,8 +103,6 @@ function loop(quotesdata, quote_id)
 
  		});
 
- 		$("#top-quotes").fadeIn('slow');
-
 		// Hide quote link, any better way to do this?
 		$('#hiddenlink' + quote_id).css('display','none');
 
@@ -166,42 +166,47 @@ function loop(quotesdata, quote_id)
 
 }
 
-$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json', function(quotesdata) {	
+page = 1;
+
+$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json?page=' + page, function(quotesdata) {	
 	$("#top-quotes").hide();
 
 	$("#top-quotes").html(function(){
 		return '';
 	});
 
-	var total = quotesdata.length;
-	var i = 0;
-
-    while(i<10){
+    for(var i=0; i<quotesdata.length; i++){
         loop(quotesdata, i);
-        i++;
-    };
+    }
+    ++page;
+});
 
     // Needs more work
 
-    $("#clickmore").css( 'cursor', 'pointer' );
+$("#clickmore").css( 'cursor', 'pointer' );
 
-    $("#clickmore").click(function() {
+$("#clickmore").click(function() {
 
-    	if (i < total){
-    		counter = 0;
-   			while(counter < 10){ 	
-        		loop(quotesdata, i);
-        		counter++;
-        		i++;
-    		};
+	$("#clickmore").html(function() {
+		return "<i class='fa fa-spinner fa-spin fa-lg aligncenter'></i>";
+	});
+
+	$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json?page=' + page, function(quotesdata) {
+
+		if (quotesdata.length == 0){
+			$("#clickmore").html(function(){
+				return "Oops! That\'s all folks! <a href='submit.html'>Do you have something to add?</a>";
+			});	
+		}	
+    	for(var i=0; i<quotesdata.length; i++){
+        	loop(quotesdata, i);
     	}
+	});
 
-    	else {
-    			$("#clickmore").html(function(){
-					return "Oops! That\'s all folks! <a href='submit.html'>Do you have something to add?</a>";
-				});
-    	}
+	++page;
 
+	$("#clickmore").html(function() {
+		return "<p>See More</p>";
 	});
 
 });
