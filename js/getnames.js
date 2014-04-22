@@ -171,16 +171,43 @@ function loop(quotesdata, quote_id)
 
 $.getJSON('quotes.json', function(quotesdata) {	
 	var foo = range(0,quotesdata.length);
+
 	$("#top-quotes").hide();
 
 	$("#top-quotes").html(function(){
 		return '';
 	});
 
+	var total = quotesdata.length-1;
+
     for (var i=1; i<=10; i++){
-    	var quote_id = foo.splice(Math.floor(Math.random() * quotesdata.length-1-i), 1)[0];   	
+    	var quote_id = foo.splice(Math.floor(Math.random() * total), 1)[0];   	
         loop(quotesdata, quote_id)
+        --total;
     };
+
+    // Needs more work
+
+    $("#clickmore").css( 'cursor', 'pointer' );
+
+    $("#clickmore").click(function() {
+
+    	if (total > 1){
+   			for (var i=1; i<=10; i++){
+    			var quote_id = foo.splice(Math.floor(Math.random() * total), 1)[0];   	
+        		loop(quotesdata, quote_id)
+        		--total;
+    		};
+    	}
+
+    	else {
+    			$("#clickmore").html(function(){
+					return "Oops! That\'s all folks! <a href='submit.html'>Do you have something to add?</a>";
+				});
+    	}
+
+	});
+
 });
 
 function range(start, end) {

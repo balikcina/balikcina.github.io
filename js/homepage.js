@@ -180,10 +180,33 @@ $.getJSON('quotes.json', function(quotesdata) {
 		return '';
 	});
 
+	var total = quotesdata.length-1;
+
     for (var i=1; i<=10; i++){
-    	var quote_id = foo.splice(Math.floor(Math.random() * quotesdata.length-1-i), 1)[0];    	   	
+    	var quote_id = foo.splice(Math.floor(Math.random() * total), 1)[0];    	   	
         loop(quotesdata, quote_id)
+        --total;
     };
+
+    $("#clickmore").css( 'cursor', 'pointer' );
+
+    $("#clickmore").click(function() {
+
+    	if (total > 1){
+   			for (var i=1; i<=10; i++){
+    			var quote_id = foo.splice(Math.floor(Math.random() * total), 1)[0];   	
+        		loop(quotesdata, quote_id)
+        		--total;
+    		};
+    	}
+
+    	else {
+    			$("#clickmore").html(function(){
+					return "Oops! That\'s all folks! <a href='submit.html'>Do you have something to add?</a>";
+				});
+    	}
+
+	});
 });
 
 
