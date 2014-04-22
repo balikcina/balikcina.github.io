@@ -188,7 +188,7 @@ $("#clickmore").css( 'cursor', 'pointer' );
 $("#clickmore").click(function() {
 
 	$("#clickmore").html(function() {
-		return "<i class='fa fa-spinner fa-spin fa-lg aligncenter'></i>";
+		return "<i class='fa fa-spinner fa-spin fa-lg text-right'></i>";
 	});
 
 	$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json?page=' + page, function(quotesdata) {
@@ -201,13 +201,14 @@ $("#clickmore").click(function() {
     	for(var i=0; i<quotesdata.length; i++){
         	loop(quotesdata, i);
     	}
+
+    	$("#clickmore").html(function() {
+			return "<p>See More</p>";
+		});
+
 	});
 
 	++page;
-
-	$("#clickmore").html(function() {
-		return "<p>See More</p>";
-	});
 
 });
 

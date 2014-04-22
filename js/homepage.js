@@ -8,7 +8,7 @@ $('.carousel').carousel({
 
 $("#maincommentbox").append(function(){
       			width = $("#maincommentbox").width();				  
-				return "<div class='fb-comments' data-href='http://balikcina.com/index.html" + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
+				return "<div class='fb-comments' data-href='http://balikcina.com/index.html" + "' data-width='" + width + "' data-numposts='5' data-colorscheme='light'></div>"
 });
 
 $.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes_count.json', function(quotenum){
@@ -171,6 +171,9 @@ function loop(quotesdata, quote_id)
       	);      		
  		}); // close fbfeedbox
 
+		$("#clickmore").html(function() {
+			return "<p>See More</p>";
+		});
  		// $("#whosaid" + quote_id).click(function(){
  		// 	$("leftbutton" + quote_id).html(function(){
  		// 		alert('test');
@@ -200,6 +203,10 @@ $.getJSON('quotes.json', function(quotesdata) {
     $("#clickmore").css( 'cursor', 'pointer' );
 
     $("#clickmore").click(function() {
+
+    	$("#clickmore").html(function() {
+			return "<i class='fa fa-spinner fa-spin fa-lg text-right'></i>";
+		});
 
     	if (total > 1){
    			for (var i=1; i<=10; i++){
