@@ -11,6 +11,13 @@ $("#maincommentbox").append(function(){
 				return "<div class='fb-comments' data-href='http://balikcina.com/index.html" + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
 });
 
+$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes_count.json', function(quotenum){
+	$("#quotenum").html(function(){
+		return quotenum;
+	});
+});
+
+
 function loop(quotesdata, quote_id)
 {     
     $.getJSON('https://vast-scrubland-9059.herokuapp.com/players/' + quotesdata[quote_id]['player_id'] + '.json', function(nplayerdata){
@@ -175,9 +182,6 @@ function loop(quotesdata, quote_id)
 }
 
 $.getJSON('quotes.json', function(quotesdata) {
-	$("#quotenum").html(function(){
-		return quotesdata.length;
-	});
 
 	var foo = range(0,quotesdata.length);
 
