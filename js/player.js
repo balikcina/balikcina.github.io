@@ -53,7 +53,7 @@ function getQuotes(quotesdata, quote_id){
 		viewcount = quotesdata[quote_id]["view_count"];
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
 		viewcount = "Views: " + viewcount;			
-		encodedquote = replaceAll('\'', '%27', quotecontents);
+		encodedquote = replaceAll('\'', '%27', quotecontents) + ' #balikcina';
 		encodedquote = encodeURIComponent(encodedquote);
 		encodedurl = 'http://www.balikcina.com/' + quotelink;
 		encodedurl = encodeURIComponent(encodedurl);

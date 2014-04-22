@@ -29,7 +29,7 @@ function loop(quotesdata, quote_id)
 		playerlink = 'players.html?name=' + player_name;
 		viewcount = "Views: " + viewcount;
 
-		encodedquote = replaceAll('\'', '%27', quotecontents);
+		encodedquote = replaceAll('\'', '%27', quotecontents) + ' #balikcina';
 		encodedquote = encodeURIComponent(encodedquote);
 		encodedurl = 'http://balikcina.com/' + quotelink;
 		encodedurl = encodeURIComponent(encodedurl);

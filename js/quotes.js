@@ -25,7 +25,7 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		viewcount = "Views: " + viewcount;
 		quotelink = 'quotes.html?quote_id=' + data['id'];
 		quotecontext = data["context"];
-		encodedquote = replaceAll('\'', '%27', quotecontents);
+		encodedquote = replaceAll('\'', '%27', quotecontents) + ' #balikcina';
 		encodedquote = encodeURIComponent(encodedquote);
 		encodedurl = window.location.href;
 		encodedurl = encodeURIComponent(encodedurl);
