@@ -66,9 +66,44 @@
                 <hr></div>
         </div>
 
+        <div class="row text-center">
+        <div class="col-md-12">
+        <div class="col-xs-6">
+            <h2>Example Quote</h2>
+            <hr>
+            <img src="./img/guides.png" class="center img-thumbnail">
+            <br>            
+        </div>
+
+        <div class="col-xs-6">
+            <h2>Embed Youtube</h2>
+            <hr>            
+                <img src="./img/youtube.png" class="center img-thumbnail">
+            <br>            
+        </div>  
+        <hr>
+
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">General Guidelines</h2>
+            <hr>            
+            <li> Make sure you're not submitting a duplicate quote! The same quote in different languages (BM/BI) is okay though!</li>
+            <li> If necessary, editing the quote for clarity or to make it shorter is okay, but don't change the meaning!</li>
+            <li> We'd prefer short and sweet quotes, don't paste an entire sentence, please! :D </li>
+            <li> Reputable souces like news articles and Youtube videos are preferred. Try not to use blogs. </li>
+            <li> Optionally, add your name email/fake email if you want recognition for your submission! [Coming Soon]</li>
+            <hr>  
+        </div>
+        </div>
+
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
+                <h1> Ready? Go! </h1>
+                <hr>
                 <form id="submitform">
                     <div class="form-group">
 
@@ -81,14 +116,17 @@
                     </div>
                     
                         <label class="control-label" for="fQuote">Quote</label>
-                        <input type="text" maxlength="160" class="form-control" name="fQuote" placeholder="160 characters or less."></div>
+                        <input type="text" maxlength="160" class="form-control" name="fQuote" placeholder="160 characters or less.">
+
+                        <label class="control-label" for="fContext">Quote Context</label>
+                        <input type="text" maxlength="160" class="form-control" name="fContext" placeholder="If necessary, for clarity">
 
                         <label class="control-label" for="fTags">Tags</label>
                         <input type="text" maxlength="160" class="form-control" name="fTags" placeholder="Any related tags? Separate with commas.">
 
                     <div class="form-group">
                         <label class="control-label" for="fDescription">Description</label>
-                        <textarea class="form-control" name="fDescription" rows="3" placeholder="Provide some context or a short description for the quote. Or paste the newspaper article here"></textarea>
+                        <textarea class="form-control" name="fDescription" rows="3" placeholder="Provide a description or funny comment for the quote. Or paste part of the newspaper article here"></textarea>
                     </div>
 
                     <label class="control-label" for="fDate">Date of your source</label>
@@ -96,7 +134,18 @@
 
                     <div class="form-group">
                         <label class="control-label" for="fSource">Source</label>
-                        <input type="text" class="form-control" name="fSource" placeholder="Add a link to the article please."></div>
+                        <input type="text" class="form-control" name="fSource" placeholder="Add a link to the article or video please.">
+                    </div>
+
+                    <br>
+                    <hr>
+                    <p> Fill in these if you want recognition for contributing! [Not implemented yet, Coming Soon] </p>
+                    
+                        <label class="control-label" for="fName">Your Name (or Nickname)</label>
+                        <input type="text" maxlength="160" class="form-control" name="fName" placeholder="This is optional!">
+
+                        <label class="control-label" for="fEmail">Your Email (or fake email?)</label>
+                        <input type="text" maxlength="160" class="form-control" name="fEmail" placeholder="This is optional!">
 
                     <button type='button' class='btn btn-default pull-right' id='submitbutton'>Done!</button>
 
@@ -109,6 +158,7 @@
 
         </div>
     </div>
+</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>

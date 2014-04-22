@@ -30,7 +30,9 @@ $("#submitbutton").click(function(){
      data["quote"]["source_url"] = datasaya['fSource']
      data["quote"]["source_date"] = datasaya['fDate']
      data["quote"]["tag_list"] = datasaya['fTags']
-     data["quote"]["context"] = "on context"
+     data["quote"]["context"] = datasaya['fContext']
+     data["quote"]["submitted_by"] = datasaya['fName']
+     data["quote"]["submitted_by_email"] = datasaya['fEmail']
     
      var jqxhr = $.ajax({type:"POST", 
                          url:"http://vast-scrubland-9059.herokuapp.com//quotes.json",
@@ -40,7 +42,7 @@ $("#submitbutton").click(function(){
          alert("Quote received!");
        })
        jqxhr.fail(function() {
-         alert("Oops, something went wrong!");
+         alert("Oops, something went wrong! Did you fill up everything?");
        })
 })
 
