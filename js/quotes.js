@@ -17,6 +17,8 @@ jQuery.expr[":"].Contains = jQuery.expr.createPseudo(function(arg) {
 $( document ).ready(function() {
 $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote_id'] + ".json", function( data ) {
 		quotedescription = data['source'];
+		submitname = data['submitted_by'];
+		submitmail = data['submitted_by_email'];
 		quotecontents = data['quote'];
 		quotedate = 'Source: ' + data["source_date"];
 		quoteurl = data['source_url'];
@@ -89,6 +91,10 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 				return "<a href ='tags.html?tag=" + data['tags'][i] + "'>"+ data['tags'][i] + " </a>";
 			});	
 		}
+
+		$("#submitname").append(function(){
+			return "<p>" + submitname + "</p>" + "<p>" + submitmail + "</p>";
+		});	
 
 		$.getJSON("https://vast-scrubland-9059.herokuapp.com/players/" + data['player_id'] + ".json", function(nplayerdata){
 		
