@@ -183,25 +183,8 @@ background-image: linear-gradient(to top, #D0D0D0 0%, #FFFFFF 10%, #FFFFFF 100%)
 	margin: 50px 0;
 }
 
-#myCarousel{
-	visibility: hidden;
-	display: none;
-}
-
-#mobilespace {
-	margin-bottom:70px;
-}
-
-@media (min-width: 500px) {
-  #myCarousel {
-    visibility: visible;
-    display: block;    
-  }
-
-  #mobilespace {
-	visibility: hidden;
-	display: none;
-  }
+#mobilespace{
+	margin-bottom: 70px;
 }
 
 #headline{
@@ -332,13 +315,13 @@ blue {
 }
 
 .quotepage h1 {
-	font-size: 200%;
+	font-size: 190%;
 	font-weight: 900;
 	display:inline;
 }
 
 .quotepage h2 {
-	font-size: 250%;
+	font-size: 200%;
 	font-weight: 500;
 	display:inline;
 }

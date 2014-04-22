@@ -128,12 +128,12 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 
  					"<h2><div class='quotebar text-center' id='quote" + quote_id + "'>" +
  					quotecontents +
- 					"</div></h2>" + // Close quote bar
+ 					"</div></h2><br>" + // Close quote bar
 
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
  					//"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i></a> &nbsp;" +
- 					"<a href='" + quotelink + "'><i class='fa fa-ellipsis-h fa-lg'>&nbsp;</i>Details</a> &nbsp;" +
+ 					//"<a href='" + quotelink + "'><i class='fa fa-ellipsis-h fa-lg'>&nbsp;</i>Details</a> &nbsp;" +
  					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
 
  					"<a class='alignright' href='" + twitterlink + "' target='_blank'><i class='fa fa-twitter fa-lg'></i>&nbsp;</a>" +
