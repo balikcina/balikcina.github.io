@@ -178,10 +178,111 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json?page=' + page, 
     for(var i=0; i<quotesdata.length; i++){
         loop(quotesdata, i);
     }
-    ++page;
+    ++page;    
 });
 
-    // Needs more work
+//storage var
+current = 0
+maxpage = 20
+page = 1
+$("#clickmorelatest").css( 'display', 'none' );
+
+$("#mostviewedquotes").css( 'cursor', 'pointer' );
+$("#mostviewedquotes").click(function() {
+	$("#clickmorelatest").css( 'display', 'none' );
+	$("#clickmore").css( 'display', 'inline' );
+
+	if (current = 1){
+		page = 1;
+		current = 0;
+	}	
+
+	$("#top-quotes").html(function() {
+		return " ";
+	});
+
+	$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json?page=' + page, function(quotesdata) {
+
+    	for(var i=0; i<quotesdata.length; i++){
+        	loop(quotesdata, i);
+    	}
+
+    	$("#clickmore").html(function() {
+			return "<p>See More</p>";
+		});
+
+    });
+
+	++page;
+
+});
+
+$("#latestquotes").css( 'cursor', 'pointer' );
+
+$("#latestquotes").click(function() {
+	$("#clickmorelatest").css( 'display', 'inline' );
+	$("#clickmore").css( 'display', 'none' );	
+
+	if (current = 0){	
+		maxpage = 20;
+		current = 1;
+	}	
+	
+	$("#top-quotes").html(function() {
+		return " ";
+	});
+
+	$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json?page=' + maxpage, function(quotesdata) {
+
+    	for(var i=0; i<quotesdata.length; i++){
+        	loop(quotesdata, i);
+    	}
+
+    	$("#clickmorelatest").html(function() {
+			return "<p>See Older</p>";
+		});
+
+    });
+	--maxpage;
+});
+
+
+// Needs more work
+
+$("#clickmorelatest").css( 'cursor', 'pointer' );
+
+$("#clickmorelatest").click(function() {
+
+	$("#clickmorelatest").html(function() {
+		return "<i class='fa fa-spinner fa-spin fa-lg text-right'></i>";
+	});
+
+	$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json?page=' + maxpage, function(quotesdata) {
+
+		if (maxpage == 1){
+			$("#clickmorelatest").html(function(){
+				return "Oops! That\'s all folks! <a href='submit.html'>Do you have something to add?</a>";
+			});	
+		}	
+
+		else {
+
+    	for(var i=0; i<quotesdata.length; i++){
+        	loop(quotesdata, i);
+    	}
+
+    	$("#clickmorelatest").html(function() {
+			return "<p>See Older</p>";
+		});
+
+    	}
+
+	});
+
+	--maxpage;
+
+});
+
 
 $("#clickmore").css( 'cursor', 'pointer' );
 
@@ -198,6 +299,9 @@ $("#clickmore").click(function() {
 				return "Oops! That\'s all folks! <a href='submit.html'>Do you have something to add?</a>";
 			});	
 		}	
+
+		else {
+
     	for(var i=0; i<quotesdata.length; i++){
         	loop(quotesdata, i);
     	}
@@ -205,6 +309,8 @@ $("#clickmore").click(function() {
     	$("#clickmore").html(function() {
 			return "<p>See More</p>";
 		});
+
+    	}
 
 	});
 
