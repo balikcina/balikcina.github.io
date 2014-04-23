@@ -181,21 +181,14 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json?page=' + page, 
     ++page;    
 });
 
-//storage var
-current = 0
-maxpage = 20
-page = 1
 $("#clickmorelatest").css( 'display', 'none' );
 
 $("#mostviewedquotes").css( 'cursor', 'pointer' );
 $("#mostviewedquotes").click(function() {
+	page = 1;
+	
 	$("#clickmorelatest").css( 'display', 'none' );
 	$("#clickmore").css( 'display', 'inline' );
-
-	if (current = 1){
-		page = 1;
-		current = 0;
-	}	
 
 	$("#top-quotes").html(function() {
 		return " ";
@@ -220,14 +213,11 @@ $("#mostviewedquotes").click(function() {
 $("#latestquotes").css( 'cursor', 'pointer' );
 
 $("#latestquotes").click(function() {
+	maxpage = 20;
+
 	$("#clickmorelatest").css( 'display', 'inline' );
 	$("#clickmore").css( 'display', 'none' );	
 
-	if (current = 0){	
-		maxpage = 20;
-		current = 1;
-	}	
-	
 	$("#top-quotes").html(function() {
 		return " ";
 	});
