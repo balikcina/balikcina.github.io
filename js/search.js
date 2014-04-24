@@ -70,13 +70,14 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
 		quotecontents = searchdata['quotes'][quote_id]["quote"];
 		quotedate = searchdata['quotes'][quote_id]["source_date"];
 		quotecontext = searchdata['quotes'][quote_id]["context"];
+		quotedetails = searchdata['quotes'][quote_id]["source"];
 		viewcount = searchdata['quotes'][quote_id]["view_count"];
 		quotelink = 'quotes.html?quote_id=' + searchdata['quotes'][quote_id]['id'];
 		playerlink = 'players.html?name=' + searchdata['quotes'][quote_id]['player_name'];
 		//facebooklink = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + quotelink + "'" + "&p[title]='" + quotecontents + "'";
 		viewcount = "Views: " + viewcount;
 
-		encodedquote = replaceAll('\'', '%27', quotecontents);
+		encodedquote = replaceAll('\'', '%27', quotecontents) + ' #balikcina';
 		encodedquote = encodeURIComponent(encodedquote);
 		encodedurl = 'http://www.balikcina.com/' + quotelink;
 		encodedurl = encodeURIComponent(encodedurl);
@@ -134,6 +135,7 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
  					"</h3></div>" + // Close bottom bar
+ 					"<div id='details" + quote_id + "'style='display: none;'><br>" + quotedetails + "</div>" + 
  					"<div class='clearfix'></div>" +
 
  				// 	"<div class='btn-group-sm pull-right'>" +
@@ -152,6 +154,31 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
 					"<div class='clearfix'></div>";	
 
  		});
+
+		
+ 		$("#player-quotes").fadeIn('slow');
+
+		// Hide quote link, any better way to do this?
+		$('#hiddenlink' + quote_id).css('display','none');
+
+		// Ugly animation hehe
+ 		$("#top-quotes").fadeIn('slow');
+
+ 		// Link to Quotes
+ 		$("#quote" + quote_id).css( 'cursor', 'pointer' );
+
+ 		$("#quote" + quote_id).click(function() {
+			$("#details" + quote_id).slideToggle("fast", function(){
+			});
+		});
+
+		$("#box" + quote_id).mouseover(function(){
+   			$(this).addClass('hoverquote');
+		});
+        
+		$("#box" + quote_id).mouseout(function(){
+   			$(this).removeClass('hoverquote');
+		});
 
 		$("#fbfeed" + quote_id).click(function(){
 		fbquotecontents = $("#quote" + quote_id).html(); 
@@ -172,44 +199,6 @@ $.getJSON("http://vast-scrubland-9059.herokuapp.com/search.json?key=" + params()
       		}
       	);      		
  		}); // close fbfeedbox
- 		
- 		$("#player-quotes").fadeIn('slow');
-
-		// Hide quote link, any better way to do this?
-		$('#hiddenlink' + quote_id).css('display','none');
-
-		// Ugly animation hehe
- 		$("#top-quotes").fadeIn('slow');
-
- 		// Link to Quotes
- 		$("#quote" + quote_id).css( 'cursor', 'pointer' );
- 		$("#quote" + quote_id).click(function() {
-			window.open($("#hiddenlink" + quote_id).html(), '_self');
-		});
-
-		// Generate and Toggle FB Comment Box
- 		$("#showcomments" + quote_id).css( 'cursor', 'pointer' );
-
- 		$("#showcomments" + quote_id).one("click", function() {	
-			$("#box" + quote_id).append(function(){
-      			width = $("#box" + quote_id).width()*0.95;				  
-				return "<br><div id='commentbox" + quote_id + "' class='fb-comments' data-href='http://balikcina.com/" + $("#hiddenlink" + quote_id).html() + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
-			});
-			FB.XFBML.parse();
-			$('#commentbox' + quote_id).css('display','none');
-		});
-
-		$("#showcomments" + quote_id).click(function() {	
-			$("#commentbox" + quote_id).toggle();
-		});
-
-		$("#box" + quote_id).mouseover(function(){
-   			$(this).addClass('hoverquote');
-		});
-        
-		$("#box" + quote_id).mouseout(function(){
-   			$(this).removeClass('hoverquote');
-		});
 
 	//}); // close get nplayerdata
     } // close for loop

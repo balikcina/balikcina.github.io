@@ -50,6 +50,7 @@ function getQuotes(quotesdata, quote_id){
 		quotecontents = quotesdata[quote_id]["quote"];
 		quotedate = quotesdata[quote_id]["source_date"];
 		quotecontext = quotesdata[quote_id]["context"];
+		quotedetails = quotesdata[quote_id]["source"];
 		viewcount = quotesdata[quote_id]["view_count"];
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
 		viewcount = "Views: " + viewcount;			
@@ -111,6 +112,7 @@ function getQuotes(quotesdata, quote_id){
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
  					"</h3></div>" + // Close bottom bar
+ 					"<div id='details" + quote_id + "'style='display: none;'><br>" + quotedetails + "</div>" + 
  					"<div class='clearfix'></div>" +
 
  				// 	"<div class='btn-group-sm pull-right'>" +
@@ -140,7 +142,9 @@ function getQuotes(quotesdata, quote_id){
  		// Link to Quotes
  		$("#quote" + quote_id).css( 'cursor', 'pointer' );
  		$("#quote" + quote_id).click(function() {
-			window.open($("#hiddenlink" + quote_id).html(), '_self');
+			$("#details" + quote_id).slideToggle("fast", function(){
+
+			});
 		});
 
 		// Generate and Toggle FB Comment Box

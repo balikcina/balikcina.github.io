@@ -20,6 +20,7 @@ function loop(quotesdata, quote_id)
 		playeravatar = quotesdata[quote_id]['player']['avatar_url'];
 		quoteurl = quotesdata[quote_id]['source_url'];
 		quotecontents = quotesdata[quote_id]["quote"];
+		quotedetails = quotesdata[quote_id]["source"];
 		quotedate = quotesdata[quote_id]["source_date"];
 		quotecontext = quotesdata[quote_id]["context"];
 		viewcount = quotesdata[quote_id]["view_count"];
@@ -87,6 +88,7 @@ function loop(quotesdata, quote_id)
  					// "<button type='button' class='btn btn-default'><i class='fa fa-twitter fa-lg'></i></button>" +
  					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
  					"</h3></div>" + // Close bottom bar
+ 					"<div id='details" + quote_id + "'style='display: none;'><br>" + quotedetails + "</div>" + 
  					"<div class='clearfix'></div>" +
 
  				// 	"<div class='btn-group-sm pull-right'>" +
@@ -112,7 +114,9 @@ function loop(quotesdata, quote_id)
  		// Link to Quotes
  		$("#quote" + quote_id).css( 'cursor', 'pointer' );
  		$("#quote" + quote_id).click(function() {
-			window.open($("#hiddenlink" + quote_id).html(), '_self');
+			$("#details" + quote_id).toggle("slow", function(){
+
+			});
 		});
 
 		// Generate and Toggle FB Comment Box
