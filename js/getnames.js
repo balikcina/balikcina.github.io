@@ -213,7 +213,7 @@ $("#mostviewedquotes").click(function() {
 $("#latestquotes").css( 'cursor', 'pointer' );
 
 $("#latestquotes").click(function() {
-	maxpage = 20;
+	maxpage = 21;
 
 	$("#clickmorelatest").css( 'display', 'inline' );
 	$("#clickmore").css( 'display', 'none' );	
