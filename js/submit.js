@@ -1,3 +1,9 @@
+$("#guides").css("display", "none");
+
+$("#documentation").click(function(){
+  $("#guides").slideToggle("fast");
+});
+
 $.getJSON('https://vast-scrubland-9059.herokuapp.com/players.json', function(playersdata) {
 
   for (var i=0; i<playersdata.length; i++){
@@ -12,7 +18,6 @@ $.getJSON('https://vast-scrubland-9059.herokuapp.com/players.json', function(pla
   }
 
  });
-
 
 $("#submitbutton").click(function(){
     var dataArray = $("#submitform").serializeArray();
@@ -29,7 +34,7 @@ $("#submitbutton").click(function(){
      data["quote"]["source"] = datasaya['fDescription']
      data["quote"]["source_url"] = datasaya['fSource']
      data["quote"]["source_date"] = datasaya['fDate']
-     data["quote"]["tag_list"] = datasaya['fTags']
+     data["quote"]["tag_list"] = $("#fTags").val()
      data["quote"]["context"] = datasaya['fContext']
      data["quote"]["submitted_by"] = datasaya['fName']
      data["quote"]["submitted_by_email"] = datasaya['fEmail']

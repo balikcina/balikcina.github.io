@@ -251,6 +251,11 @@ blue {
 	padding-bottom: 25px;
 }
 
+.quote img{
+	width: 100%;
+}
+
+
 .quote h1 {
 	font-size: 130%;
 	font-weight: 900;
@@ -312,6 +317,10 @@ blue {
 	border-width: 1px;
 	padding-top: 25px;
 	padding-bottom: 25px;
+}
+
+.quotepage img{
+	width: 100%;
 }
 
 .quotepage h1 {

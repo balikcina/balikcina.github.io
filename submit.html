@@ -23,7 +23,12 @@
     <link href="./css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="./css/custom.css" rel="stylesheet" media="screen">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/start/jquery-ui.css">
+
     <link rel="icon" href="favicon.png" type="image/png"/>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-tagsinput.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-tagsinput.js"></script>
     <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -40,6 +45,7 @@
 </head>
 
 <body>
+
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -59,13 +65,14 @@
                 <p>
                     <h2>Submit a Quote</h2>
                     <h4>Did you find something interesting that we missed? Let us know!</h4>
-                    <p> Note: If a name you're looking for is not in the list, please select 'Others' :) </p>
+                    <p> Please read our <button type="button" class="btn btn-default btn-sm" id="documentation">Documentation</button> for instructions</p>
 <!--                     <p> <b>Submission system still in development. Contact us at info@balikcina.com to contribute.</b> 
                     </p> -->
                 </p>
                 <hr></div>
         </div>
 
+        <div id="guides">
         <div class="row text-center">
         <div class="col-xs-12">
             <h2>Example Quote</h2>
@@ -84,10 +91,19 @@
         </div>  
         </div>
 
+        <div class="row text-center">
+        <div class="col-xs-12">
+            <h2>Embed Image</h2>
+            <hr>            
+                <img src="./img/embedimage.png" class="center img-thumbnail">
+            <br>            
+        </div>  
+        </div>
+     </div>
 
         <div class="row">
         <div class="col-md-12">
-            <h2 class="text-center">General Guidelines</h2>
+            <h2 class="text-left">General Guidelines</h2>
             <hr>            
             <li> Make sure you're not submitting a duplicate quote! The same quote in different languages (BM/BI) is okay though!</li>
             <li> If necessary, editing the quote for clarity or to make it shorter is okay, but don't change the meaning!</li>
@@ -98,6 +114,7 @@
             <hr>  
         </div>
         </div>
+
 
         <div class="row">
             <div class="col-md-2"></div>
@@ -115,37 +132,56 @@
                         </div>
                     </div>
                     
+                    <div class="control-group">
                         <label class="control-label" for="fQuote">Quote</label>
+                    <div class="controls">
                         <input type="text" maxlength="160" class="form-control" name="fQuote" placeholder="160 characters or less.">
-
-                        <label class="control-label" for="fContext">Quote Context</label>
-                        <input type="text" maxlength="160" class="form-control" name="fContext" placeholder="If necessary, for clarity">
-
-                        <label class="control-label" for="fTags">Tags</label>
-                        <input type="text" maxlength="160" class="form-control" name="fTags" placeholder="Any related tags? Separate with commas.">
-
-                    <div class="form-group">
-                        <label class="control-label" for="fDescription">Description</label>
-                        <textarea class="form-control" name="fDescription" rows="3" placeholder="Paste a Youtube video or part of a newspaper article here. Provide some funny/witty comments if you want to."></textarea>
+                        </div>
                     </div>
 
-                    <label class="control-label" for="fDate">Date of your source</label>
-                    <input type="date" class="form-control" name="fDate">
+                    <div class="control-group">
+                        <label class="control-label" for="fContext">Quote Context</label>
+                    <div class="controls">
+                        <input type="text" maxlength="160" class="form-control" name="fContext" placeholder="If necessary, for clarity"></div></div>
 
+                    <div class="control-group">
+                        <label class="control-label" for="fTags">Tags</label><br>
+                    <div class="controls">
+                        <input type="text" maxlength="160" class="form-control" name="fTags" id="fTags" data-role="tagsinput" value="foot in mouth, price hikes, overconfidence, DAP" /></div></div>
+
+                    <div class="control-group">    
+                    <div class="form-group">
+                        <label class="control-label" for="fDescription">Description</label>
+                        <div class="controls">
+                            <textarea class="form-control" name="fDescription" rows="3" placeholder="Paste a Youtube video or part of a newspaper article here. Provide some funny/witty comments if you want to."></textarea></div></div>
+                    </div>
+
+                    <div class="control-group">
+                    <label class="control-label" for="fDate">Date of your source</label>
+                    <div class="controls">
+                        <input type="date" class="form-control" name="fDate"></div></div>
+
+                    <div class="control-group">
                     <div class="form-group">
                         <label class="control-label" for="fSource">Source</label>
-                        <input type="text" class="form-control" name="fSource" placeholder="Add a link to the article or video please.">
+                         <div class="controls">
+                           <input type="text" class="form-control" name="fSource" placeholder="Add a link to the article or video please."></div>
+                        </div>
                     </div>
 
                     <br>
                     <hr>
                     <p> Change these if you want recognition for contributing! </p>
                     
+                        <div class="control-group">
                         <label class="control-label" for="fName">Your Name (or Nickname)</label>
-                        <input type="text" maxlength="160" class="form-control" name="fName" value="Anonymous" placeholder="This is optional!">
+                        <div class="controls">
+                            <input type="text" maxlength="160" class="form-control" name="fName" value="Anonymous" placeholder="This is optional!"></div></div>
 
+                        <div class="control-group">
                         <label class="control-label" for="fEmail">Your Email (or fake email?)</label>
-                        <input type="text" maxlength="160" class="form-control" name="fEmail" value="anonymous@mail.com" placeholder="This is optional!">
+                        <div class="controls">
+                            <input type="text" maxlength="160" class="form-control" name="fEmail" value="anonymous@mail.com" placeholder="This is optional!"></div></div>
                         
                     <br>
                     <button type='button' class='btn btn-default pull-right' id='submitbutton'>Done!</button>
@@ -162,9 +198,12 @@
 </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>    
     <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/typeahead.bundle.js"></script>
     <script src="./js/navbar.js"></script>
     <script src="./js/submit.js"></script>
+    
     <footer>
         <div id="gen-footer"></div>
     </footer>
