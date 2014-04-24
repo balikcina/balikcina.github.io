@@ -251,7 +251,7 @@ blue {
 	padding-bottom: 25px;
 }
 
-.quote img{
+.quotedescription img{
 	width: 100%;
 }
 
@@ -317,10 +317,6 @@ blue {
 	border-width: 1px;
 	padding-top: 25px;
 	padding-bottom: 25px;
-}
-
-.quotepage img{
-	width: 100%;
 }
 
 .quotepage h1 {
