@@ -4259,8 +4259,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   cursor: not-allowed;
 }
 .label {
-  display: inline;
+  display: inline-block;
   padding: .2em .6em .3em;
+  margin-bottom:10px;
   font-size: 90%;
   font-weight: bold;
   line-height: 1;
