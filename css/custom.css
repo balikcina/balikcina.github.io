@@ -243,6 +243,14 @@ blue {
 .fb-like-box span{width: 100% !important;}
 .fb-like-box iframe span[style]{width: 100% !important;} }
 
+#quotedescription {
+	word-wrap: break-word;
+}
+
+#extlinks{
+	word-wrap: break-word;
+}
+
 .quote {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	border-bottom-style: solid;
@@ -350,8 +358,3 @@ img.center {
     margin-left: auto;
     margin-right: auto;
 }
-<<<<<<< HEAD
-/*
-why no sync*/
-=======
->>>>>>> 833ded956425e06e259dc0d3d1a5735387cd2cca

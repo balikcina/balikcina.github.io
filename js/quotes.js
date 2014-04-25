@@ -109,15 +109,15 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
  		$("#top-quotes").append(function(){
  				
  			return 	"<div class='quotepage'>" +
- 					"<div class='row'>" +
 
  					// Quotes sub-box
+ 				"<div class='row'>" + 					
  					"<div class='col-xs-3' id='box" + quote_id + "'>" +
  					"<a href='" + playerlink + "'>" + "<img class='img-thumbnail center' width='100%' src='" + playeravatar + "'></a>" +
  					"</div>" + // close avatar column
 
- 					"<div class='col-xs-9'>"+ // open quote column
 
+ 					"<div class='col-xs-9'>"+ // open quote column
  					"<div class='topbar'>" +
  					"<h1>" + "<span id='player_name" + quote_id + "'>" + player_name + "</span>&nbsp;</h1>" + 							
 	 				"</div>" +  // Close topbar
@@ -129,12 +129,12 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
  					"<h2><div class='quotebar' id='quote" + quote_id + "'>" +
  					quotecontents +
  					"</div></h2><br>" + // Close quote bar
-
  					"</div>" + //close quote column
- 					"</div>" + //close row
+ 				"</div>" + //close row
  					
- 					"<div class='row'>" +
+ 				"<div class='row'>" +
  					"<div class='col-xs-12'>" +
+
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
  					//"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i></a> &nbsp;" +
@@ -147,10 +147,11 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
  					// 	"<button type='button' class='btn btn-default'><i class='fa fa-facebook-square fa-lg'></i></button>" +
  					"</h3></div>" + // Close bottom bar
  					"<left><p><h3>" + viewcount + "</h3></p></left>" +
+
  					"<div class='clearfix'></div>" +
 					"</div>" + //close bottom bar
 					"</div>" + //close column
-					"</div>" + //close row
+				"</div>" + //close row
 
 					"<div id='hiddenlink" + quote_id + "'>" + quotelink + "</div>" + 
 
