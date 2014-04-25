@@ -34,9 +34,7 @@ function loop(quotesdata, quote_id)
 		viewcount = quotesdata[quote_id]["view_count"];
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
 		playerlink = 'players.html?name=' + player_name;
-		viewcount = "Views: " + viewcount;
-
-		commentnumber = "<span id='commentclass" + quote_id + "'><fb:comments-count href=http://balikcina.com/" + quotelink + "></fb:comments-count></span>"
+		viewcount = "Views: " + viewcount;		
 
 		encodedquote = replaceAll('\'', '%27', quotecontents) + ' #balikcina';
 		encodedquote = encodeURIComponent(encodedquote);
@@ -45,6 +43,7 @@ function loop(quotesdata, quote_id)
 		twitterlink = 'https://twitter.com/share?text=' + encodedquote + ' ' + '&url=' + encodedurl;
 
 		quote_id = quotesdata[quote_id]['id'];
+		commentnumber = "<span id='commentclass" + quote_id + "'><fb:comments-count href=http://balikcina.com/" + quotelink + "></fb:comments-count></span>"
 
 		// Empty space if no context
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
