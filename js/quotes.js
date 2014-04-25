@@ -33,6 +33,8 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		encodedurl = encodeURIComponent(encodedurl);
 		twitterlink = 'https://twitter.com/share?text=' + encodedquote + ' ' + '&url=' + encodedurl;
 
+		commentnumber = "<span id='commentclass" + quote_id + "'><fb:comments-count href=http://balikcina.com/" + quotelink + "></fb:comments-count></span>"
+
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
 			thecontext = "<em style='font-size: 16px;'>On " + quotecontext + ": </em><p>";
 		}
@@ -40,7 +42,12 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 		else{
 		 	thecontext = "";
 		}
+
+		$("#shownumber").html(function(){
+			return commentnumber;
+		});	
 		
+		FB.XFBML.parse($("#shownumber")[0]);
 
 		$(document).attr('title', 'Balik Cina - ' + quotecontents);
 		$('meta[name=og\\:title]').attr('content', 'Balik Cina!');

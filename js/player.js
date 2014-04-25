@@ -60,6 +60,8 @@ function getQuotes(quotesdata, quote_id){
 		encodedurl = encodeURIComponent(encodedurl);
 		twitterlink = 'https://twitter.com/share?text=' + encodedquote + ' ' + '&url=' + encodedurl;
 
+		commentnumber = "<span id='commentclass" + quote_id + "'><fb:comments-count href=http://balikcina.com/" + quotelink + "></fb:comments-count></span>"
+
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
 			thecontext = "<em style='font-size: 16px;'>On " + quotecontext + ": </em>";
 		}
@@ -103,7 +105,7 @@ function getQuotes(quotesdata, quote_id){
 
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
- 					"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i></a> &nbsp;" +
+ 					"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i> (" + commentnumber + ") </a> &nbsp;" +
  					"<a href='" + quotelink + "'><i class='fa fa-ellipsis-h fa-lg'>&nbsp;</i>Details</a> &nbsp;" +
  					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
 
@@ -130,7 +132,9 @@ function getQuotes(quotesdata, quote_id){
 					"</div></div>" + // Close quote box, rows
 					"<div class='clearfix'></div>";	
  		});
-
+	
+		FB.XFBML.parse($("#commentclass" + quote_id)[0]);
+		
  		$("#player-quotes").fadeIn('slow');
 
 		// Hide quote link, any better way to do this?

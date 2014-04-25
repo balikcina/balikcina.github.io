@@ -31,6 +31,7 @@ function loop(quotesdata, quote_id)
 		quotecontext = quotesdata[quote_id]["context"];
 		quotedetails = quotesdata[quote_id]["source"];
 		viewcount = quotesdata[quote_id]["view_count"];
+
 		quotelink = 'quotes.html?quote_id=' + quotesdata[quote_id]['id'];
 		playerlink = 'players.html?name=' + player_name;
 		viewcount = "Views: " + viewcount;
@@ -39,6 +40,8 @@ function loop(quotesdata, quote_id)
 		encodedurl = 'http://balikcina.com/' + quotelink;
 		encodedurl = encodeURIComponent(encodedurl);
 		twitterlink = 'https://twitter.com/share?text=' + encodedquote + ' ' + '&url=' + encodedurl;
+
+		commentnumber = "<span id='commentclass" + quote_id + "'><fb:comments-count href=http://balikcina.com/" + quotelink + "></fb:comments-count></span>"
 
 		// Empty space if no context
 		if(quotecontext != null && quotecontext != "" && quotecontext != " ") {
@@ -85,7 +88,7 @@ function loop(quotesdata, quote_id)
 
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
- 					"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i>Comments</a> &nbsp;" +
+ 					"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i>Comments (" + commentnumber + ") </a> &nbsp;" +
  					"<a href='" + quotelink + "'><i class='fa fa-ellipsis-h fa-lg'>&nbsp;</i>Details</a> &nbsp;" +
  					"<a class= 'hidden-xs' href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
 
@@ -110,6 +113,8 @@ function loop(quotesdata, quote_id)
 					"<div class='clearfix'></div>";	
 
  		});
+
+		FB.XFBML.parse($("#commentclass" + quote_id)[0]);
 
 		// Hide quote link, any better way to do this?
 		$('#hiddenlink' + quote_id).css('display','none');

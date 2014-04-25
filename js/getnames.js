@@ -36,6 +36,8 @@ function loop(quotesdata, quote_id)
 		playerlink = 'players.html?name=' + player_name;
 		viewcount = "Views: " + viewcount;
 
+		commentnumber = "<span id='commentclass" + quote_id + "'><fb:comments-count href=http://balikcina.com/" + quotelink + "></fb:comments-count></span>"
+
 		encodedquote = replaceAll('\'', '%27', quotecontents) + ' #balikcina';
 		encodedquote = encodeURIComponent(encodedquote);
 		encodedurl = 'http://balikcina.com/' + quotelink;
@@ -87,7 +89,7 @@ function loop(quotesdata, quote_id)
 
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
- 					"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i></a> &nbsp;" +
+ 					"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i>Comments (" + commentnumber + ") </a> &nbsp;" +
  					"<a href='" + quotelink + "'><i class='fa fa-ellipsis-h fa-lg'>&nbsp;</i>Details</a> &nbsp;" +
  					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
 
@@ -112,6 +114,8 @@ function loop(quotesdata, quote_id)
 					"<div class='clearfix'></div>";	
 
  		});
+	
+		FB.XFBML.parse($("#commentclass" + quote_id)[0]);
 
 		// Hide quote link, any better way to do this?
 		$('#hiddenlink' + quote_id).css('display','none');
@@ -237,15 +241,24 @@ $("#latestquotes").click(function() {
 
 	$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes.json?page=' + maxpage, function(quotesdata) {
 
-    	for(var i=0; i<quotesdata.length; i++){
-        	loop(quotesdata, i);
-    	}
+		if (quotesdata.length == 0){
+			$("#top-quotes").append(function() {
+				return "Some quotes are still under review, please click 'See Older'.";
+			});
+		}
+
+		//else{
+    		for(var i=0; i<quotesdata.length; i++){
+        		loop(quotesdata, i);
+    		}
+    	//}
 
     	$("#clickmorelatest").html(function() {
 			return "<p>See Older</p>";
 		});
 
     });
+
 	--maxpage;
 });
 
