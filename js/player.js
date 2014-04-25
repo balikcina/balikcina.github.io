@@ -33,7 +33,7 @@ function getPlayer(quotesdata){
 
 		for (var i=0; i < nplayerdata['tags'].length; i++){
 			$("#playertags").append(function(){
-				return "<a href ='tags.html?tag=" + nplayerdata['tags'][i] + "'>"+ nplayerdata['tags'][i] + " </a>";
+				return "<a href ='tags.html?tag=" + nplayerdata['tags'][i] + "'><span class='label label-info'>"+ nplayerdata['tags'][i] + " </span></a>&nbsp;";
 			});	
 		}
 

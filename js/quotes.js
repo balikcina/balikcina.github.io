@@ -88,7 +88,7 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 
 		for (var i=0; i < data['tags'].length; i++){
 			$("#taglist").append(function(){
-				return "<a href ='tags.html?tag=" + data['tags'][i] + "'>"+ data['tags'][i] + " </a>";
+				return "<a href ='tags.html?tag=" + data['tags'][i] + "'><span class='label label-info'>"+ data['tags'][i] + " </span></a>&nbsp;";
 			});	
 		}
 

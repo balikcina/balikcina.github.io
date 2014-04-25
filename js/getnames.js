@@ -50,7 +50,7 @@ function loop(quotesdata, quote_id)
  			return 	"<div class='quote'>" +
  					"<div class='row'>" +
 
- 					// Avatar sub-box
+ 					// Ava` sub-box
  					"<div class='col-xs-2 nopadding'>" +
  						"<a href='" + playerlink + "'>" + "<img class='img-thumbnail' style='float:right' width='100%' src='" + playeravatar + "'></a>" +
  					"</div>" +
@@ -80,7 +80,7 @@ function loop(quotesdata, quote_id)
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
  					"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i></a> &nbsp;" +
- 					"<a href='" + quotelink + "' target='_blank'><i class='fa fa-ellipsis-h fa-lg'>&nbsp;</i>Details</a> &nbsp;" +
+ 					"<a href='" + quotelink + "'><i class='fa fa-ellipsis-h fa-lg'>&nbsp;</i>Details</a> &nbsp;" +
  					"<a href='" + quoteurl + "' target='_blank'><i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a> &nbsp;" +
 
  					"<a class='alignright' href='" + twitterlink + "' target='_blank'><i class='fa fa-twitter fa-lg'></i>&nbsp;</a>" +
