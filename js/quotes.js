@@ -65,7 +65,7 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
 				return "<div id='commentbox" + quote_id + "' class='fb-comments' data-href='" + $(location).attr('href') + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
 			});
 
-			$('#commentbox'+ quote_id).css('display','none');
+			//$('#commentbox'+ quote_id).css('display','none');
 
 			FB.XFBML.parse($("#commentshehe")[0], function() {
    				$('#commentbox' + quote_id).show("slow");

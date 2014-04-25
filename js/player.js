@@ -160,13 +160,13 @@ function getQuotes(quotesdata, quote_id){
       			width = $("#box" + quote_id).width()*0.95;				  
 				return "<div id='commentbox" + quote_id + "' class='fb-comments' data-href='http://balikcina.com/" + $("#hiddenlink" + quote_id).html() + "' data-width='" + width + "' data-numposts='10' data-colorscheme='light'></div>"
 			});
-			$('#commentbox' + quote_id).css('display','none');
+			//$('#commentbox' + quote_id).css('display','none');
 			FB.XFBML.parse($('#box' + quote_id)[0], function() {
-   				$('#commentbox' + quote_id).show("slow");
+   				$('#commentbox' + quote_id).slideDown("fast");
 			});			
 		}
 		else{
-			$("#commentbox" + quote_id).toggle("slow");			
+			$("#commentbox" + quote_id).slideToggle("fast");			
 		}
 		++clicks;
 		});
@@ -192,7 +192,7 @@ function getQuotes(quotesdata, quote_id){
        		description: (fbquotecontents),
        		link: fbquotelink,
        		picture: 'http://balikcina.com/img/balikcina.jpg',
-       		redirect_uri: 'balikcina.com'
+       		//redirect_uri: 'balikcina.com'
       		},
       		function(response) {
 
