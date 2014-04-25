@@ -112,24 +112,29 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
  					"<div class='row'>" +
 
  					// Quotes sub-box
- 					"<div class='col-xs-12' id='box" + quote_id + "'>" +
- 					"<a href='" + playerlink + "'>" + "<img class='img-thumbnail center' width='20%' src='" + playeravatar + "'></a>" +
+ 					"<div class='col-xs-3' id='box" + quote_id + "'>" +
+ 					"<a href='" + playerlink + "'>" + "<img class='img-thumbnail center' width='100%' src='" + playeravatar + "'></a>" +
+ 					"</div>" + // close avatar column
 
- 					"<div class='topbar text-center'>" +
- 					"<h1>" + "<span id='player_name" + quote_id + "'>" + player_name + "</span>&nbsp;</h1>" + 					
-	
- 					"<div style='clear: both;'></div>" +
- 					"</div>" +  // Close topbar
+ 					"<div class='col-xs-9'>"+ // open quote column
 
- 					"<div class='midbar text-center'>"+
+ 					"<div class='topbar'>" +
+ 					"<h1>" + "<span id='player_name" + quote_id + "'>" + player_name + "</span>&nbsp;</h1>" + 							
+	 				"</div>" +  // Close topbar
+
+ 					"<div class='midbar'>"+
  					thecontext +
  					"</div>" + // Close midbar
- 					"<div style='clear: both;'></div>" +
 
- 					"<h2><div class='quotebar text-center' id='quote" + quote_id + "'>" +
+ 					"<h2><div class='quotebar' id='quote" + quote_id + "'>" +
  					quotecontents +
  					"</div></h2><br>" + // Close quote bar
 
+ 					"</div>" + //close quote column
+ 					"</div>" + //close row
+ 					
+ 					"<div class='row'>" +
+ 					"<div class='col-xs-12'>" +
  					"<div class='bottombar'><h3>" +
  					// "<div class='btn-group-sm pull-left' id='leftbutton'" + quote_id + "'>" +		
  					//"<a class='alignleft' id='showcomments" + quote_id + "'><i class='fa fa-comment fa-lg'>&nbsp;</i></a> &nbsp;" +
@@ -143,17 +148,13 @@ $.getJSON( "https://vast-scrubland-9059.herokuapp.com/quotes/" + params()['quote
  					"</h3></div>" + // Close bottom bar
  					"<left><p><h3>" + viewcount + "</h3></p></left>" +
  					"<div class='clearfix'></div>" +
-
- 				// 	"<div class='btn-group-sm pull-right'>" +
- 				// 	"<a class='btn btn-default vermiddle' id='whosaid" + quote_id + "'" + " href='" + playerlink + "'role='button'>" + player_name + "</a>" +					
- 				// 	"<a class='btn btn-default vermiddle' href='" + quoteurl + "'role='button' target='_blank'>" + "<i class='fa fa-clock-o fa-lg'>&nbsp; </i>" + quotedate + "</a>" +
-					// // "<a class='btn btn-default vermiddle' href='" + quotelink + "'role='button'>See Details</a>" +
-					//"<hr>" + 
-					"</div>" + //close quote sub-box
+					"</div>" + //close bottom bar
+					"</div>" + //close column
+					"</div>" + //close row
 
 					"<div id='hiddenlink" + quote_id + "'>" + quotelink + "</div>" + 
 
-					"</div></div>" + // Close quote box, rows
+					"</div>" + // Close container
 					"<div class='clearfix'></div>";	
 
  		});
