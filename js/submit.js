@@ -49,6 +49,8 @@ $("#submitbutton").click(function(){
        jqxhr.fail(function() {
          alert("Oops, something went wrong! Did you fill up everything?");
        })
+
+    $('#submitform')[0].reset();
 })
 
 
