@@ -13,6 +13,14 @@ $.getJSON('players.json', function(playersdata) {
  	}
  });
 
+$.getJSON('https://vast-scrubland-9059.herokuapp.com/quotes_count.json', function(quotenum){
+	$("#maxpage").html(function(){
+		return Math.ceil(quotenum/10);
+	});
+});
+
+$("#maxpage").css("visibility", "hidden");
+
 function loop(quotesdata, quote_id)
 {	    	
 		// Much variables, wow.
@@ -217,7 +225,8 @@ $("#mostviewedquotes").click(function() {
 $("#latestquotes").css( 'cursor', 'pointer' );
 
 $("#latestquotes").click(function() {
-	maxpage = 21;
+	
+	maxpage = $("#maxpage").html();
 
 	$("#clickmorelatest").css( 'display', 'inline' );
 	$("#clickmore").css( 'display', 'none' );	
