@@ -4610,7 +4610,7 @@ a.thumbnail.active {
   position: relative;
   display: block;
   padding: 15px 15px;
-  margin-bottom: 25px;
+  margin-bottom: -1px;
   background-color: #ffffff;
   border: 2px solid #8986A0;
 }

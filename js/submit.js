@@ -1,5 +1,6 @@
 $("#guides").css("display", "none");
 
+
 $("#documentation").click(function(){
   $("#guides").slideToggle("fast");
 });

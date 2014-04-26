@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="Balik Cina - The finest collection of beautiful and inspirational quotes by Malaysian politicians. Discover the best of Malaysia here. You tak suka, you keluar.">
     <meta name="author" content="Balik Cina">
     <meta property="fb:app_id" content="704162499629518"/>
@@ -15,12 +17,16 @@
     <meta name="twitter:description" content="Balik Cina - Discover the best Malaysia has to offer">
 
     <title>Balik Cina - Discover the best Malaysia has to offer | Tags</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="./css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="./css/custom.css" rel="stylesheet" media="screen">
+    <link href="./css/offcanvas.css" rel="stylesheet" media="screen">
+    
     <link rel="icon" href="favicon.png" type="image/png"/>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -38,59 +44,83 @@
 
 <body>
 
-    <nav class="navbar navbar-default" role="navigation">
+<div id="fb-root"></div>
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '704162499629518',
+          status     : true,
+          xfbml      : true
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+    </script>
+
+<nav class="navbar navbar-default" role="navigation">
         <div id="gen-navbar"></div>
-    </nav>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="page-header">
-                    <h1 class="text-center">
-                        Tagged with: <div id="tagname">Tag</div>
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">Profiles</div>
-                
-                <div class="panel-body" id="list-profiles">
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-8">
-
-            <div class="panel panel-default">
-                    <div class="panel-heading">Quotes</div>
+</nav>
     
+    <div class="container">
 
-                    <ul class="list-group">
-                        <div id="player-quotes"></div>
-                    </ul>
-            </div>
+      <div class="row row-offcanvas row-offcanvas-right">
 
-        </div>
+        <div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Categories</button>
+          </p>
+<!--           <div class="jumbotron">
+            <h1>Hello, world!</h1>
+            <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+          </div> -->
+          <div class="row">
+            <div class="col-lg-1"></div>
 
-        </div>
+                <div class="col-lg-11">
+                  <h1><span id="updatetag">Select a Category</span></h1>
+                  <div id="player-quotes"></div>     
+                  <br>
+                  <p class="text-right" id="clickmore">See More</p>               
+              </div>
 
+          </div><!--/row-->
+        </div><!--/span-->
 
-    </div>
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="visible-lg">
+            <h3>Categories</h3>
+          </div>
+          <div class="list-group">
+                  <a href="tags.html?tag=policy%20fail" class="list-group-item">Policy Fail</a>
+                  <a href="tags.html?tag=foot%20in%20mouth" class="list-group-item">Foot in Mouth</a>
+                  <a href="tags.html?tag=overconfidence" class="list-group-item">Overconfidence</a>
+                  <a href="tags.html?tag=rude" class="list-group-item">Rude</a>     
+                  <a href="tags.html?tag=race%20religion" class="list-group-item">Race Religion</a>
+                  <a href="tags.html?tag=offensive" class="list-group-item">Offensive</a>
+                  <a href="tags.html?tag=nonsense" class="list-group-item">Nonsense</a>
+                  <a href="tags.html?tag=tak%20suka%20you%20keluar" class="list-group-item">Tak Suka You Keluar</a>  
+          </div>
+        </div><!--/span-->
+      </div><!--/row-->
+    </div><!--/.container-->
 
-    <footer>
-        <div id="gen-footer"></div>
-    </footer>
+<footer>
+<div id="gen-footer"></div>
+</footer>
 
 <script src="//code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="./js/navbar.js"></script>
-<script src="./js/tags.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/tags.js"></script>
+<script src="js/offcanvas.js"></script>
 
 </body>
 </html>
