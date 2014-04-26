@@ -127,6 +127,8 @@ function getQuotes(quotesdata, quote_id){
 					"<div class='clearfix'></div>";	
 
  		});
+		
+		$('#clickmore').css('visibility','show');
 
  		$("#player-quotes").fadeIn('slow');
 
