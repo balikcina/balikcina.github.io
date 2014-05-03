@@ -8,6 +8,8 @@ params = function() {
   return vars;
 };
 
+$('#clickmore').css('visibility','show');
+
 $(document).attr('title', 'Balik Cina - ' + params()['tag']);
 
 $("#updatetag").html(function(){
@@ -128,8 +130,6 @@ function getQuotes(quotesdata, quote_id){
 
  		});
 		
-		$('#clickmore').css('visibility','show');
-
  		$("#player-quotes").fadeIn('slow');
 
 		// Hide quote link, any better way to do this?
