@@ -5788,7 +5788,7 @@ button.close {
 
 .navbar {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-weight: normal;
   letter-spacing: 180%;
   background-color:#130e42;
 }
